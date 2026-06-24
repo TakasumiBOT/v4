@@ -3,7 +3,6 @@ import { botEnv as env } from "@takasumibot-v4/env/bot";
 const config = {
   clientId: "981314695543783484",
   inviteUrl: "https://discord.gg/NEesRdGQwD",
-  termsUrl: "https://www.takasumibot.com/terms",
   announce: {
     guildId: "987698915820335124",
     channels: {
@@ -42,26 +41,6 @@ const config = {
     pypiIcon: "https://cdn.takasumibot.com/images/pypi.png",
     guidelineIcon: "https://cdn.takasumibot.com/images/system/guideline.png",
     upGif: "https://cdn.takasumibot.com/images/up.gif",
-  },
-  level: {
-    cardBackgroundsUrl: "https://level-card-backgrounds.pages.dev",
-    score: {
-      min: 6,
-      max: 12,
-      percent: 50,
-    },
-    cooltime: {
-      min: 15,
-      max: 30,
-      percent: 75,
-    },
-    bonus: {
-      min: 20,
-      max: 60,
-      length: 40,
-      percent: 30,
-    },
-    minLength: 3,
   },
   isDebug: false,
   shardCount: parseInt(env.SHARD_COUNT),

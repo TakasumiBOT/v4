@@ -12,7 +12,6 @@ import guildBoard from "@/routes/guildBoard";
 import statusInfo from "@/routes/status";
 import shard from "@/routes/shard";
 import statistics from "@/routes/statistics";
-import evaluateServer from "@/routes/evaluateServer";
 import alteration from "@/routes/admin/alteration";
 import pushNotifications from "@/routes/pushNotifications";
 import realtime from "@/routes/realtime";
@@ -42,7 +41,6 @@ app.use(
         "/v3/auth/isAdmin/",
         "/v3/account/:id",
         "/v3/assets/",
-        "/v3/evaluateServer/",
         "/v3/notifications/:userId",
         "/v3/notifications/:userId/register",
       ],
@@ -72,7 +70,6 @@ app.use(shard);
 app.use(statusInfo);
 app.use(guildBoard);
 app.use(statistics);
-app.use(evaluateServer);
 app.use(alteration);
 app.use(pushNotifications);
 app.use(realtime);

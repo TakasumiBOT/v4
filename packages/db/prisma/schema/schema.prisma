@@ -289,22 +289,6 @@ model ShardStatus {
   loggedAt DateTime @default(now())
 }
 
-model LevelGuild {
-  guildId String
-  userId  String
-  score   Int    @default(0)
-
-  @@id([guildId, userId])
-  @@index([guildId, score(sort: Desc)])
-}
-
-model LevelUser {
-  userId String @id
-  score  BigInt @default(0)
-
-  @@index([score(sort: Desc)])
-}
-
 model webauth {
   id                      String   @unique
   userId                  String

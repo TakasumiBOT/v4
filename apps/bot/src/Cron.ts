@@ -37,11 +37,6 @@ class Cron {
       this.sendNotifications();
       this.recordShardStatus();
     });
-
-    cron.schedule("* * * * *", () => {
-      this.applyGuildScore();
-      this.applyUserScore();
-    });
   }
 
   private async recordSystemLog(): Promise<void> {
@@ -225,71 +220,6 @@ class Cron {
       if (i + CHUNK_SIZE < notificationsToSend.length) {
         await new Promise((resolve) => setTimeout(resolve, 1000));
       }
-    }
-  }
-
-  private async applyGuildScore() {
-    let cursor = "0";
-    let keytmp: Set<string> = new Set();
-
-    do {
-      const tmp = await shardRedis.scan(cursor, "MATCH", "level:score:g:*", "COUNT", "3000");
-      cursor = tmp[0];
-      for (const key of tmp[1]) {
-        keytmp.add(key);
-      }
-    } while (cursor !== "0");
-
-    const key = [...keytmp];
-    if (!(key.length > 0)) return;
-
-    const val = await shardRedis.mget(key);
-    await shardRedis.del(key);
-
-    for (let i = 0; i < key.length; i++) {
-      const parts = key[i].split(":"); // ["level", "score", "g", "guildId", "userId"]
-      const guildId = parts[3];
-      const userId = parts[4];
-      const score = parseInt(val[i] || "0", 10);
-
-      // Upsert
-      await prisma.levelGuild.upsert({
-        where: { guildId_userId: { guildId, userId } },
-        update: { score: { increment: score } },
-        create: { guildId, userId, score },
-      });
-    }
-  }
-
-  private async applyUserScore() {
-    let cursor = "0";
-    let keytmp: Set<string> = new Set();
-
-    do {
-      const tmp = await shardRedis.scan(cursor, "MATCH", "level:score:u:*", "COUNT", "3000");
-      cursor = tmp[0];
-      for (const key of tmp[1]) {
-        keytmp.add(key);
-      }
-    } while (cursor !== "0");
-
-    const key = [...keytmp];
-    if (!(key.length > 0)) return;
-
-    const val = await shardRedis.mget(key);
-    await shardRedis.del(key);
-
-    for (let i = 0; i < key.length; i++) {
-      const parts = key[i].split(":"); // ["level", "score", "u", "userId"]
-      const userId = parts[3];
-      const score = BigInt(val[i] || "0");
-
-      // Upsert
-      await prisma.levelUser.upsert({
-        where: { userId: userId },
-        update: { score: { increment: score } },
-        create: { userId, score },
-      });
     }
   }
 }

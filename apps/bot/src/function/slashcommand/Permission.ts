@@ -8,7 +8,6 @@ import {
   ButtonBuilder,
   ActionRowBuilder,
   ButtonStyle,
-  Role,
   MessageFlags,
 } from "discord.js";
 import { relative } from "path";
