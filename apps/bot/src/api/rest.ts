@@ -1,7 +1,7 @@
 import { REST } from "@discordjs/rest";
 import { Routes, APIGuildMember } from "discord-api-types/v10";
-import Log from "../util/Log";
-import { env } from "../util/Env";
+import Log from ".@/util/Log";
+import { env } from ".@/util/Env";
 
 const rest = new REST().setToken(env.BOT_TOKEN);
 

@@ -2,7 +2,7 @@ import { Client } from "discord.js";
 import fs from "fs";
 import path from "path";
 import { pathToFileURL } from "url";
-import Log from "./util/Log";
+import Log from "@/util/Log";
 import {
   InteractionCreateEvent,
   MessageCreateEvent,
@@ -12,7 +12,7 @@ import {
   GuildMemberRemoveEvent,
   GuildMemberAddEvent,
   MessageUpdateEvent,
-} from "./@types/Util";
+} from "@/@types/Util";
 
 class EventLoader {
   public readonly client: Client;

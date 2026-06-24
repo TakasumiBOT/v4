@@ -22,20 +22,20 @@ import {
   GuildMember,
   PrimaryEntryPointCommandInteraction,
 } from "discord.js";
-import { prisma } from "./util/db";
-import { EventType, disableCommand } from "@takasumibot-v4/db";
-import EventLoader from "./EventLoader";
+import { prisma } from "@/util/db";
+import { disableCommand } from "@takasumibot-v4/db";
+import EventLoader from "@/EventLoader";
 import fs from "fs";
 import path from "path";
-import config from "./config";
-import Mute from "./util/Mute";
-import Log from "./util/Log";
-import { Command, CommandData } from "./@types/Util";
+import config from "@/config";
+import Mute from "@/util/Mute";
+import Log from "@/util/Log";
+import { Command, CommandData } from "@/@types/Util";
 import { pathToFileURL } from "url";
-import Permission from "./util/Permission";
-import DBCache from "./util/DBCache";
-import isAdmin from "./util/isAdmin";
-import eventCount from "./util/eventCount";
+import Permission from "@/util/Permission";
+import DBCache from "@/util/DBCache";
+import isAdmin from "@/util/isAdmin";
+import eventCount from "@/util/eventCount";
 import { botEnv as env } from "@takasumibot-v4/env/bot";
 
 class Handler {

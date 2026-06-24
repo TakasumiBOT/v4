@@ -1,13 +1,13 @@
 import { Client, GatewayIntentBits } from "discord.js";
-import config from "./config";
-import Handler from "./Handler";
-import Cron from "./Cron";
-import Log from "./util/Log";
-import { ShardStats } from "./@types/Util";
+import config from "@/config";
+import Handler from "@/Handler";
+import Cron from "@/Cron";
+import Log from "@/util/Log";
+import { ShardStats } from "@/@types/Util";
 import { botEnv as env } from "@takasumibot-v4/env/bot";
-import { shardRedis } from "./util/redis";
-import updateStatus from "./util/updateStatus";
-import updateMachineStatus from "./util/updateMachineStatus";
+import { shardRedis } from "@/util/redis";
+import updateStatus from "@/util/updateStatus";
+import updateMachineStatus from "@/util/updateMachineStatus";
 
 const client: Client = new Client({
   intents: [

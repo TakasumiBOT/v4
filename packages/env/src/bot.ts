@@ -4,6 +4,7 @@ import { z } from "zod";
 
 export const botEnv = createEnv({
   server: {
+    API_PASSWORD: z.string(),
     SHARDS: z.string().optional(),
     BOT_TOKEN: z.string(),
     NOTICE_WEBHOOK: z.string(),

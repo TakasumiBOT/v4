@@ -1,7 +1,7 @@
 import { Elysia, t, status } from "elysia";
 import { bearer } from "@elysiajs/bearer";
-import { evaluateServerRisk } from "../../util/EvaluateServer";
-import { env } from "../../util/Env";
+import { evaluateServerRisk } from "@/util/EvaluateServer";
+import { botEnv as env } from "@takasumibot-v4/env/bot";
 export const evaluateServer = new Elysia({ prefix: "/v3/evaluateServer" }).use(bearer()).get(
   "/",
   async ({ bearer, query: { name, description } }) => {
