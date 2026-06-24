@@ -8,3 +8,294 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+enum reportTargetType {
+  user
+  guild
+}
+
+enum reportActionType {
+  muteUser
+  unMuteUser
+  muteIp
+  unMuteIp
+  muteGuild
+  unMuteGuild
+  warn
+  delete
+}
+
+model muteUser {
+  userId    String   @id
+  reason    String
+  createdAt DateTime @default(now())
+  expireAt  DateTime @default("9999-12-31 23:59:59Z")
+}
+
+model muteGuild {
+  guildId   String   @id
+  reason    String
+  createdAt DateTime @default(now())
+}
+
+model muteIp {
+  address   String   @id
+  reason    String
+  expireAt  DateTime
+  createdAt DateTime @default(now())
+}
+
+model systemLog {
+  id           Int      @id @default(autoincrement())
+  ping         Int
+  totalUser    Int
+  totalGuild   Int
+  totalCommand Int
+  cpuUsage     Int
+  memoryUsage  Int
+  loggedAt     DateTime @default(now())
+}
+
+model userCache {
+  id          String  @id
+  username    String
+  globalName  String?
+  avatar      String?
+  banner      String?
+  accentColor Int?
+  bot         Boolean
+  flags       Int?
+}
+
+model guildCache {
+  id          String  @id
+  name        String
+  icon        String?
+  ownerId     String
+  memberCount Int
+  onlineCount Int
+  boostCount  Int
+}
+
+model tmpReport {
+  id         String           @id
+  targetType reportTargetType
+  targetId   String
+  title      String
+  reason     String
+  reporterId String
+  createdAt  DateTime         @default(now())
+}
+
+model report {
+  id                String           @id
+  targetType        reportTargetType
+  targetId          String
+  title             String
+  reason            String
+  action            reportActionType
+  reporterId        String
+  originalTitle     String
+  originalReason    String
+  originalCreatedAt DateTime
+  createdAt         DateTime         @default(now())
+}
+
+model commandHistory {
+  id         Int      @id @default(autoincrement())
+  userId     String
+  channelId  String
+  guildId    String
+  name       String
+  option     String
+  executedAt DateTime @default(now())
+}
+
+model commandCooldown {
+  id          String   @id
+  commandName String
+  userId      String
+  executedAt  DateTime @default(now())
+}
+
+model guildStatistics {
+  guildId      String   @id
+  totalJoin    BigInt   @default(0)
+  totalLeave   BigInt   @default(0)
+  totalMessage BigInt   @default(0)
+  updatedAt    DateTime @updatedAt
+  registeredAt DateTime @default(now())
+}
+
+model globalChat {
+  guildId      String   @id
+  channelId    String   @unique
+  webhookUrl   String
+  registeredAt DateTime @default(now())
+}
+
+model globalChatHistory {
+  id        Int                         @id @default(autoincrement())
+  guildId   String
+  channelId String
+  messageId String
+  userId    String
+  transfer  globalChatTransferHistory[]
+  createdAt DateTime                    @default(now())
+}
+
+model globalChatTransferHistory {
+  id        Int               @id @default(autoincrement())
+  sourceId  Int
+  source    globalChatHistory @relation(fields: [sourceId], references: [id])
+  guildId   String
+  channelId String
+  messageId String            @unique
+}
+
+model admin {
+  userId       String   @id
+  registeredAt DateTime @default(now())
+}
+
+model afk {
+  userId    String   @id
+  message   String
+  mention   Int      @default(0)
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+}
+
+model joinNotice {
+  guildId    String   @id
+  channelId  String
+  webhookUrl String
+  message    String
+  createdAt  DateTime @default(now())
+}
+
+model leaveNotice {
+  guildId    String   @id
+  channelId  String
+  webhookUrl String
+  message    String
+  createdAt  DateTime @default(now())
+}
+
+model hiroyuki {
+  channelId  String   @id
+  guildId    String   @unique
+  webhookUrl String
+  createdAt  DateTime @default(now())
+}
+
+model publish {
+  channelId String   @id
+  guildId   String
+  createdAt DateTime @default(now())
+}
+
+model bumpNotice {
+  guildId  String   @id
+  roleId   String
+  createAt DateTime @default(now())
+}
+
+model dissokuNotice {
+  guildId  String   @id
+  roleId   String
+  createAt DateTime @default(now())
+}
+
+model upNotice {
+  guildId  String   @id
+  roleId   String
+  createAt DateTime @default(now())
+}
+
+model bumpNoticeIgnore {
+  guildId   String   @id
+  createdAt DateTime @default(now())
+}
+
+model dissokuNoticeIgnore {
+  guildId   String   @id
+  createdAt DateTime @default(now())
+}
+
+model upNoticeIgnore {
+  guildId   String   @id
+  createdAt DateTime @default(now())
+}
+
+model expandIgnore {
+  guildId   String   @id
+  createdAt DateTime @default(now())
+}
+
+model pin {
+  channelId  String   @id
+  messegeId  String
+  guildId    String
+  webhookUrl String
+  updatedAt  DateTime @updatedAt
+  createdAt  DateTime @default(now())
+}
+
+model botBoard {
+  botId       String   @id
+  inviteUrl   String
+  description String
+  ownerId     String
+  updatedAt   DateTime @updatedAt
+  createdAt   DateTime @default(now())
+}
+
+model guildBoard {
+  guildId     String   @id
+  inviteUrl   String
+  description String
+  updatedAt   DateTime @updatedAt
+  createdAt   DateTime @default(now())
+}
+
+model checkHuman {
+  userId    String   @id
+  createdAt DateTime @default(now())
+}
+
+enum NotificationType {
+  bump
+  dissoku
+  tksmup
+}
+
+model NotificationQueue {
+  id          Int              @id @default(autoincrement())
+  guildId     String
+  channelId   String
+  type        NotificationType
+  scheduledAt DateTime
+}
+
+model ShardStatus {
+  id       Int      @id @default(autoincrement())
+  data     String
+  loggedAt DateTime @default(now())
+}
+
+model LevelGuild {
+  guildId String
+  userId  String
+  score   Int    @default(0)
+
+  @@id([guildId, userId])
+  @@index([guildId, score(sort: Desc)])
+}
+
+model LevelUser {
+  userId String @id
+  score  BigInt @default(0)
+
+  @@index([score(sort: Desc)])
+}

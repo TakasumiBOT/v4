@@ -10,6 +10,7 @@ export const botEnv = createEnv({
     TZ: z.string(),
     SHARD_COUNT: z.string().default("16"),
     STATUS_WEBHOOK: z.string(),
+    SHARD_LIST: z.string(),
     MACHINE_ID: z.string(),
   },
   runtimeEnv: process.env,

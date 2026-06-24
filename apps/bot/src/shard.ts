@@ -30,19 +30,6 @@ manager.on("shardCreate", (shard: Shard) => {
 
   shard.on("reconnecting", async () => {
     Log.warn(`${shard.id}番シャードが再接続中です`);
-    try {
-      await fetch(env.STATUS_WEBHOOK, {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({
-          content: `:warning: シャード${shard.id}が再接続しました`,
-          username: "TakasumiBOT Status Notification",
-          avatar_url: config.image.botIcon,
-        }),
-      });
-    } catch (err) {
-      console.log(err);
-    }
   });
 
   shard.on("death", async () => {

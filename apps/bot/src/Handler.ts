@@ -23,14 +23,13 @@ import {
   PrimaryEntryPointCommandInteraction,
 } from "discord.js";
 import { prisma } from "./util/db";
-import { EventType, disableCommand } from "./generated/prisma/client";
+import { EventType, disableCommand } from "@takasumibot-v4/db";
 import EventLoader from "./EventLoader";
 import fs from "fs";
 import path from "path";
 import config from "./config";
 import Mute from "./util/Mute";
 import Log from "./util/Log";
-import { needsTermsAgreement } from "./util/TermsCompliance";
 import { Command, CommandData } from "./@types/Util";
 import { pathToFileURL } from "url";
 import Permission from "./util/Permission";
@@ -76,14 +75,6 @@ class Handler {
     if (!this.client.shard || env.SHARDS === "0") {
       this.saveCommandData();
     }
-
-    await prisma.economy.upsert({
-      where: { clientId: config.clientId },
-      update: {},
-      create: {
-        clientId: config.clientId,
-      },
-    });
 
     Promise.all(this.loader.readyEvents.map((event) => event.execute()));
   }
@@ -140,44 +131,6 @@ class Handler {
             ),
           ],
         });
-
-      if (
-        !(
-          (interaction.isButton() && interaction.customId === "termsAgree") ||
-          (interaction.isChatInputCommand() &&
-            interaction.commandName === "account" &&
-            interaction.options.getSubcommand() === "register")
-        )
-      ) {
-        if (await needsTermsAgreement(interaction.user.id)) {
-          const latestTerms = await prisma.termsChange.findFirst({
-            orderBy: {
-              date: "desc",
-            },
-          });
-          return await interaction.reply({
-            embeds: [
-              {
-                color: Colors.Yellow,
-                author: {
-                  name: "利用規約への同意が必要です",
-                  icon_url: config.image.warnIcon,
-                },
-                description: `利用規約が更新されているため、最新の利用規約への同意が必要です。\n[利用規約](${latestTerms!.termsUrl})をご確認の上、同意をお願いいたします。\n\n**最終更新日:** ${latestTerms ? `<t:${Math.floor(latestTerms.date.getTime() / 1000)}:D>` : "不明"}\n\n**運営からのメッセージ:**　${latestTerms!.message}`,
-              },
-            ],
-            components: [
-              new ActionRowBuilder<ButtonBuilder>().addComponents(
-                new ButtonBuilder()
-                  .setLabel("利用規約に同意する")
-                  .setCustomId("termsAgree")
-                  .setStyle(ButtonStyle.Primary),
-              ),
-            ],
-            flags: MessageFlags.Ephemeral,
-          });
-        }
-      }
 
       if (await Mute.isMuteGuild(interaction.guild.id))
         return await interaction.reply({
@@ -259,15 +212,6 @@ class Handler {
 
     Promise.all(this.loader.interactionCreateEvent.map((event) => event.execute(interaction)));
 
-    await prisma.eventLog.create({
-      data: {
-        guildId: interaction.guildId,
-        userId: interaction.user.id,
-        bot: interaction.user.bot,
-        event: EventType.interactionCreate,
-      },
-    });
-
     await eventCount(EventType.interactionCreate, interaction.user.bot);
 
     DBCache.addUser(interaction.user);
@@ -280,25 +224,11 @@ class Handler {
   private async onGuildCreate(guild: Guild): Promise<void> {
     Promise.all(this.loader.guildCreateEvent.map((event) => event.execute(guild)));
 
-    await prisma.eventLog.create({
-      data: {
-        guildId: guild.id,
-        event: EventType.guildCreate,
-      },
-    });
-
     await eventCount(EventType.guildCreate, false);
   }
 
   private async onGuildDelete(guild: Guild): Promise<void> {
     Promise.all(this.loader.guildDeleteEvent.map((event) => event.execute(guild)));
-
-    await prisma.eventLog.create({
-      data: {
-        guildId: guild.id,
-        event: EventType.guildDelete,
-      },
-    });
 
     await eventCount(EventType.guildDelete, false);
   }
@@ -306,29 +236,11 @@ class Handler {
   private async onGuildMemberAdd(member: GuildMember): Promise<void> {
     Promise.all(this.loader.guildMemberAddEvent.map((event) => event.execute(member)));
 
-    await prisma.eventLog.create({
-      data: {
-        guildId: member.guild.id,
-        userId: member.id,
-        bot: member.user.bot,
-        event: EventType.guildMemberAdd,
-      },
-    });
-
     await eventCount(EventType.guildMemberAdd, member.user.bot);
   }
 
   private async onGuildMemberRemove(member: GuildMember | PartialGuildMember): Promise<void> {
     Promise.all(this.loader.guildMemberRemoveEvent.map((event) => event.execute(member)));
-
-    await prisma.eventLog.create({
-      data: {
-        guildId: member.guild.id,
-        userId: member.id,
-        bot: member.user.bot,
-        event: EventType.guildMemberRemove,
-      },
-    });
 
     await eventCount(EventType.guildMemberRemove, member.user.bot);
   }
@@ -353,19 +265,6 @@ class Handler {
               .map((data) => `${data.name}:${data.value}`)
               .join(" ")
           : "",
-      },
-    });
-
-    await prisma.userStatistics.upsert({
-      where: { userId: interaction.user.id },
-      update: {
-        totalCommand: {
-          increment: 1,
-        },
-      },
-      create: {
-        userId: interaction.user.id,
-        totalCommand: 1,
       },
     });
   }
