@@ -2,15 +2,12 @@ import { Elysia } from "elysia";
 import { cors } from "@elysiajs/cors";
 import { openapi } from "@elysiajs/openapi";
 import Log from "../util/Log";
-import guild from "./routes/discord/guild";
-import user from "./routes/discord/user";
 import getAuth from "./routes/auth/get";
 import updateAuth from "./routes/auth/update";
 import checkIP from "./routes/auth/checkip";
 import fingerptinting from "./routes/auth/fingerprint";
 import isAdmin from "./routes/auth/isAdmin";
 import checkSubs from "./routes/auth/checkSubAccs";
-import userSearch from "./routes/discord/userSearch";
 import guildBoard from "./routes/guildBoard";
 import statusInfo from "./routes/status";
 import shard from "./routes/shard";
@@ -65,15 +62,12 @@ app.use(
   }),
 );
 
-app.use(guild);
-app.use(user);
 app.use(getAuth);
 app.use(updateAuth);
 app.use(checkIP);
 app.use(fingerptinting);
 app.use(isAdmin);
 app.use(checkSubs);
-app.use(userSearch);
 app.use(shard);
 app.use(statusInfo);
 app.use(guildBoard);
