@@ -15,7 +15,7 @@ import CommandUtils from "@/util/CommandUtils";
 import { prisma } from "@/util/db";
 
 import { treaty } from "@elysiajs/eden";
-import type { App } from "@/image-gen";
+import { App } from "@/image-gen";
 import lvScore from "@/static/lvScore.json";
 
 const imageGen = treaty<App>("http://localhost:3000");

@@ -15,18 +15,15 @@ import {
   ChatInputCommandInteraction,
   MessageFlags,
   Guild,
-  GuildMember,
-  PrimaryEntryPointCommandInteraction,
-} from "discord.js";
-import type {
   RepliableInteraction,
   PartialGuildMember,
   OmitPartialGroupDMChannel,
-  PartialMessage
+  PartialMessage,
+  GuildMember,
+  PrimaryEntryPointCommandInteraction,
 } from "discord.js";
 import { prisma } from "./util/db";
-import { EventType } from "./generated/prisma/client";
-import type { disableCommand } from "./generated/prisma/client";
+import { EventType, disableCommand } from "./generated/prisma/client";
 import EventLoader from "./EventLoader";
 import fs from "fs";
 import path from "path";
@@ -34,7 +31,7 @@ import config from "./config";
 import Mute from "./util/Mute";
 import Log from "./util/Log";
 import { needsTermsAgreement } from "./util/TermsCompliance";
-import type { Command, CommandData } from "./@types/Util";
+import { Command, CommandData } from "./@types/Util";
 import { pathToFileURL } from "url";
 import Permission from "./util/Permission";
 import DBCache from "./util/DBCache";
