@@ -18,10 +18,9 @@ class AntiCheat {
 
     if (recentHistory.length < 3) return false;
 
-    const intervals = [];
+    const intervals: number[] = [];
     for (let i = 1; i < recentHistory.length; i++) {
-      const diff =
-        recentHistory[i - 1].executedAt.getTime() - recentHistory[i].executedAt.getTime();
+      const diff = recentHistory[i - 1].executedAt.getTime() - recentHistory[i].executedAt.getTime();
 
       intervals.push(diff);
     }

@@ -14,7 +14,6 @@ import { relative } from "path";
 import Report from "@/util/Report";
 import config from "@/config";
 import { prisma } from "@takasumibot-v4/db";
-import { evaluateServerRisk } from "@/util/EvaluateServer";
 
 class RegisterEvent implements InteractionCreateEvent {
   public readonly client: Client;
@@ -63,25 +62,6 @@ class RegisterEvent implements InteractionCreateEvent {
           ],
           flags: MessageFlags.Ephemeral,
         });
-
-      const risk = await evaluateServerRisk({ name: interaction.guild.name, description });
-
-      if (risk.risk >= 50) {
-        await interaction.reply({
-          embeds: [
-            {
-              color: Colors.Red,
-              author: {
-                name: "登録できませんでした",
-                icon_url: config.image.errorIcon,
-              },
-              description:
-                "サーバー掲示板の審査基準を満たしていないため、登録できませんでした。\nなお、審査に関する詳細な情報についてはお答えできかねますので、ご了承ください。",
-            },
-          ],
-          flags: MessageFlags.Ephemeral,
-        });
-      }
 
       const invite = await interaction.channel.createInvite({
         unique: true,

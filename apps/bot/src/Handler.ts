@@ -35,7 +35,6 @@ import { pathToFileURL } from "url";
 import Permission from "@/util/Permission";
 import DBCache from "@/util/DBCache";
 import isAdmin from "@/util/isAdmin";
-import eventCount from "@/util/eventCount";
 import { botEnv as env } from "@takasumibot-v4/env/bot";
 
 class Handler {

@@ -25,6 +25,14 @@ enum reportActionType {
   delete
 }
 
+model userAddress {
+  userId       String   @id
+  address      String
+  oldAddress   String   @default("none")
+  updatedAt    DateTime @updatedAt
+  registeredAt DateTime @default(now())
+}
+
 model disableCommand {
   name         String   @id
   registeredAt DateTime @default(now())

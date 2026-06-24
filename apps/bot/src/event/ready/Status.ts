@@ -31,7 +31,7 @@ class StatusEvent implements ReadyEvent {
         let text = "";
 
         if (guildCount === -1 || userCount === -1) {
-          text = "集計中 または 起動中";
+          text = "起動中";
         } else {
           text = `${guildCount} server || ${userCount} user${this.client.shard ? ` || ${this.client.shard.count}shard` : ""}`;
         }
