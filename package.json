@@ -1,0 +1,42 @@
+{
+  "name": "takasumibot-v4",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "apps/*",
+      "packages/*"
+    ],
+    "catalog": {
+      "dotenv": "^17.2.2",
+      "zod": "^4.1.13",
+      "typescript": "^6",
+      "@types/bun": "^1.3.4"
+    }
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "check-types": "turbo check-types",
+    "dev:server": "turbo -F server dev",
+    "db:push": "turbo -F @takasumibot-v4/db db:push",
+    "db:studio": "turbo -F @takasumibot-v4/db db:studio",
+    "db:generate": "turbo -F @takasumibot-v4/db db:generate",
+    "db:migrate": "turbo -F @takasumibot-v4/db db:migrate",
+    "check": "oxlint && oxfmt --write"
+  },
+  "dependencies": {
+    "@takasumibot-v4/env": "workspace:*",
+    "dotenv": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@takasumibot-v4/config": "workspace:*",
+    "@types/bun": "catalog:",
+    "oxfmt": "^0.53.0",
+    "oxlint": "^1.68.0",
+    "turbo": "^2.9.16",
+    "typescript": "catalog:"
+  },
+  "packageManager": "bun@1.3.11"
+}
