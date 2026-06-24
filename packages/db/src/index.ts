@@ -1,7 +1,9 @@
 import { PrismaPg } from "@prisma/adapter-pg";
 import { sharedEnv } from "@takasumibot-v4/env/shared";
 
-import { PrismaClient } from "@/prisma/generated/client";
+import { PrismaClient } from "../prisma/generated/client";
+
+export * from "../prisma/generated/client";
 
 export function createPrismaClient() {
   const adapter = new PrismaPg({
@@ -10,5 +12,4 @@ export function createPrismaClient() {
   return new PrismaClient({ adapter });
 }
 
-const prisma = createPrismaClient();
-export default prisma;
+export const prisma = createPrismaClient();

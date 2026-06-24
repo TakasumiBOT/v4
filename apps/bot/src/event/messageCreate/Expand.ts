@@ -9,7 +9,7 @@ import {
 import { MessageCreateEvent } from "@/@types/Util";
 import Fetch from "@/util/Fetch";
 import RateLimit from "@/util/RateLimit";
-import { prisma } from "@/util/db";
+import { prisma } from "@takasumibot-v4/db";
 
 class ExpandEvent implements MessageCreateEvent {
   public readonly client: Client;

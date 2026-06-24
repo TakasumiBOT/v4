@@ -12,9 +12,9 @@ import {
 import { Command, CommandType } from "@/@types/Util";
 import CommandUtils from "@/util/CommandUtils";
 import config from "@/config";
-import { prisma } from "@/util/db";
+import { prisma } from "@takasumibot-v4/db";
 import { NotificationQueueService } from "@/util/NotificationQueue";
-import { NotificationType } from "@/generated/prisma/enums";
+import { NotificationType } from "@takasumibot-v4/db";
 
 class UpCommand implements Command {
   public readonly client: Client;

@@ -1,5 +1,5 @@
 import { Guild, User } from "discord.js";
-import { prisma } from "@/util/db";
+import { prisma } from "@takasumibot-v4/db";
 import { reevaluate } from "@/util/EvaluateServer";
 
 class DBCache {

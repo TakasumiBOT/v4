@@ -1,10 +1,10 @@
 import { Client, Message, Colors, PermissionFlagsBits, ChannelType } from "discord.js";
 import { MessageCreateEvent } from "@/@types/Util";
 import config from "@/config";
-import { prisma } from "@/util/db";
+import { prisma } from "@takasumibot-v4/db";
 import { NotificationQueueService } from "@/util/NotificationQueue";
-import { NotificationType } from "@/generated/prisma/enums";
-import { env } from "@/util/Env";
+import { NotificationType } from "@takasumibot-v4/db";
+import { botEnv as env } from "@takasumibot-v4/env/bot";
 
 class BumpEvent implements MessageCreateEvent {
   public readonly client: Client;

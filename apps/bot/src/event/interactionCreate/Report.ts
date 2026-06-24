@@ -16,7 +16,7 @@ import { reportTargetType } from "@takasumibot-v4/db";
 import Fetch from "@/util/Fetch";
 import createId from "@/util/createId";
 import Mute from "@/util/Mute";
-import { prisma } from "@/util/db";
+import { prisma } from "@takasumibot-v4/db";
 
 class ReportEvent implements InteractionCreateEvent {
   public readonly client: Client;

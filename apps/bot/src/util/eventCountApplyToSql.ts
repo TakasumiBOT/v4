@@ -1,5 +1,5 @@
 import { EventType } from "@takasumibot-v4/db";
-import { prisma } from "@/util/db";
+import { prisma } from "@takasumibot-v4/db";
 import { shardRedis } from "@/util/redis";
 
 type redisUserType = "bot" | "user";

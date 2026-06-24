@@ -15,7 +15,7 @@ import CommandUtils from "@/util/CommandUtils";
 import config from "@/config";
 import Report from "@/util/Report";
 import { join, relative } from "path";
-import { prisma } from "@/util/db";
+import { prisma } from "@takasumibot-v4/db";
 import deleteDuplicateWebhook from "@/util/deleteDuplicateWebhook";
 import deleteWebhook from "@/util/deleteWebhook";
 

@@ -3,7 +3,7 @@
   "type": "module",
   "main": "src/index.ts",
   "scripts": {
-    "check-types": "tsc -b",
+    "check-types": "tsc",
     "build": "bun build --compile --minify --bytecode ./src/index.ts --outfile server",
     "dev": "bun run --hot src/index.ts"
   },

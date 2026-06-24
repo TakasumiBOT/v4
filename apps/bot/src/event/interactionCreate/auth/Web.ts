@@ -13,7 +13,7 @@ import { InteractionCreateEvent } from "@/@types/Util";
 import Config from "@/config";
 import crypto from "node:crypto";
 import config from "@/config";
-import { prisma } from "@/util/db";
+import { prisma } from "@takasumibot-v4/db";
 
 class WebAuthEvent implements InteractionCreateEvent {
   public readonly client: Client;

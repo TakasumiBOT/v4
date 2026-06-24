@@ -11,7 +11,7 @@ import { Command, CommandType } from "@/@types/Util";
 import config from "@/config";
 import CommandUtils from "@/util/CommandUtils";
 import { IpResponse } from "@/@types/Api";
-import { env } from "@/util/Env";
+import { botEnv as env } from "@takasumibot-v4/env/bot";
 
 class IpCommand implements Command {
   public readonly client: Client;

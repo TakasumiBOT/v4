@@ -1,4 +1,4 @@
-import { prisma } from "@/util/db";
+import { prisma } from "@takasumibot-v4/db";
 
 export async function needsTermsAgreement(userId: string): Promise<boolean> {
   const user = await prisma.account.findUnique({

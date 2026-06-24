@@ -1,5 +1,5 @@
-import { prisma } from "@/util/db";
-import { NotificationType } from "@/generated/prisma/enums";
+import { prisma } from "@takasumibot-v4/db";
+import { NotificationType } from "@takasumibot-v4/db";
 
 interface IAddNotificationOptions {
   guildId: string;

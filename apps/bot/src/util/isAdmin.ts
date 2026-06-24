@@ -1,4 +1,4 @@
-import { prisma } from "@/util/db";
+import { prisma } from "@takasumibot-v4/db";
 let cache: Set<string> = new Set();
 
 const isAdmin = async (userId: string, force?: boolean): Promise<boolean> => {

@@ -19,7 +19,7 @@ import Report from "@/util/Report";
 import { relative } from "path";
 import Money from "@/util/Money";
 import connectImage from "@/util/connectImage";
-import { prisma } from "@/util/db";
+import { prisma } from "@takasumibot-v4/db";
 import { generateRollResult, addRollItemsToInventory } from "@/util/generateRollResult";
 
 class RollCommand implements Command {

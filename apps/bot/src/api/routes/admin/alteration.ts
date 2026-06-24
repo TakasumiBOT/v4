@@ -1,8 +1,8 @@
 import { Elysia, t, status } from "elysia";
 import { JobCategory } from "@/generated/prisma/enums";
 import { bearer } from "@elysiajs/bearer";
-import { prisma } from "@/util/db";
-import { env } from "@/util/Env";
+import { prisma } from "@takasumibot-v4/db";
+import { botEnv as env } from "@takasumibot-v4/env/bot";
 
 const alteration = new Elysia({ prefix: "/v3/admin/alteration" })
   .use(bearer())

@@ -4,7 +4,7 @@
   "type": "module",
   "main": "src/index.ts",
   "scripts": {
-    "check-types": "tsc -b",
+    "check-types": "tsc",
     "dev": "bun run --hot src/index.ts",
     "build": "bun build --compile --minify --bytecode ./src/index.ts --outfile bot"
   },
@@ -19,8 +19,8 @@
     "discord-api-types": "^0.38.49",
     "discord.js": "^14.26.4",
     "elysia": "^1.4.29",
-    "sharp": "^0.35.2",
-    "node-cron": "^4.5.0"
+    "node-cron": "^4.5.0",
+    "sharp": "^0.35.2"
   },
   "devDependencies": {
     "@types/bun": "latest"

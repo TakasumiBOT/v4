@@ -1,7 +1,7 @@
 import { Elysia, status, t } from "elysia";
-import { prisma } from "@/util/db";
+import { prisma } from "@takasumibot-v4/db";
 import { bearer } from "@elysiajs/bearer";
-import { env } from "@/util/Env";
+import { botEnv as env } from "@takasumibot-v4/env/bot";
 
 const pushNotifications = new Elysia({ prefix: "/v3/notifications" })
   .use(bearer())

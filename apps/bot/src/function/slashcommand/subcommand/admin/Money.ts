@@ -10,7 +10,7 @@ import CommandUtils from "@/util/CommandUtils";
 import config from "@/config";
 import Fetch from "@/util/Fetch";
 import Money from "@/util/Money";
-import { prisma } from "@/util/db";
+import { prisma } from "@takasumibot-v4/db";
 
 class MoneySubCommand implements SubCommand {
   public readonly client: Client;

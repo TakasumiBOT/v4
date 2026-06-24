@@ -1,7 +1,7 @@
 import { Colors } from "discord.js";
 import Log from "@/util/Log";
 import config from "@/config";
-import { env } from "@/util/Env";
+import { botEnv as env } from "@takasumibot-v4/env/bot";
 
 class Notice {
   public static async sendData(option: object): Promise<void> {

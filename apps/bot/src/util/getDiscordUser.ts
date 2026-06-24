@@ -1,6 +1,6 @@
 import { APIUser } from "discord.js";
-import { prisma } from "@/util/db";
-import { env } from "@/util/Env";
+import { prisma } from "@takasumibot-v4/db";
+import { botEnv as env } from "@takasumibot-v4/env/bot";
 
 export async function fetchAndCacheUser(userId: string) {
   const dbUser = await prisma.userCache.findUnique({

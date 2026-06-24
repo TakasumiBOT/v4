@@ -2,7 +2,7 @@ import { Client, Message, ChannelType } from "discord.js";
 import { MessageCreateEvent } from "@/@types/Util";
 import { relative } from "path";
 import Report from "@/util/Report";
-import { prisma } from "@/util/db";
+import { prisma } from "@takasumibot-v4/db";
 
 class PublishEvent implements MessageCreateEvent {
   public readonly client: Client;

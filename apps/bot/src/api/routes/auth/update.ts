@@ -4,8 +4,8 @@ import { Colors } from "discord.js";
 import config from "@/config";
 import { giveRole } from "@/api/rest";
 import Money from "@/util/Money";
-import { prisma } from "@/util/db";
-import { env } from "@/util/Env";
+import { prisma } from "@takasumibot-v4/db";
+import { botEnv as env } from "@takasumibot-v4/env/bot";
 
 const updateAuth = new Elysia({ prefix: "/v3/auth/update" })
   .use(bearer())

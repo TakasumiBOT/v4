@@ -1,7 +1,7 @@
 import { Elysia, status, t } from "elysia";
 import { bearer } from "@elysiajs/bearer";
-import { prisma } from "@/util/db";
-import { env } from "@/util/Env";
+import { prisma } from "@takasumibot-v4/db";
+import { botEnv as env } from "@takasumibot-v4/env/bot";
 
 const isAdmin = new Elysia({ prefix: "/v3/auth/isAdmin" }).use(bearer()).get(
   "/",

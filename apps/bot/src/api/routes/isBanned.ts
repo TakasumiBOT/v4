@@ -1,7 +1,7 @@
 import { Elysia, status, t } from "elysia";
 import { bearer } from "@elysiajs/bearer";
 import Mute from "@/util/Mute";
-import { env } from "@/util/Env";
+import { botEnv as env } from "@takasumibot-v4/env/bot";
 
 const isBanned = new Elysia({ prefix: "/v3/isBanned" }).use(bearer()).get(
   "/:id",

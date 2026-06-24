@@ -18,7 +18,7 @@ import Report from "@/util/Report";
 import config from "@/config";
 import CommandUtils from "@/util/CommandUtils";
 import calcBoost from "@/util/calcBoost";
-import { prisma } from "@/util/db";
+import { prisma } from "@takasumibot-v4/db";
 
 class Serverommand implements Command {
   public readonly client: Client;

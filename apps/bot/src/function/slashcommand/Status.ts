@@ -28,7 +28,7 @@ import getUserCount from "@/util/getUserCount";
 import getCpuStatus from "@/util/getCpuStatus";
 import getCpuUsageAvg from "@/util/getCpuUsageAvg";
 import getMemoryUsageAvg from "@/util/getMemoryUsageAvg";
-import { env } from "@/util/Env";
+import { botEnv as env } from "@takasumibot-v4/env/bot";
 
 class StatusCommand implements Command {
   public readonly client: Client;

@@ -1,5 +1,5 @@
 import Redis from "ioredis";
-import { env } from "@/util/Env";
+import { botEnv as env } from "@takasumibot-v4/env/bot";
 
 export const shardRedis = new Redis(env.SHARD_REDIS);
 

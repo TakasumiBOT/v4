@@ -13,7 +13,7 @@ import { InteractionCreateEvent } from "@/@types/Util";
 import { relative } from "path";
 import Report from "@/util/Report";
 import config from "@/config";
-import { prisma } from "@/util/db";
+import { prisma } from "@takasumibot-v4/db";
 import { evaluateServerRisk } from "@/util/EvaluateServer";
 
 class RegisterEvent implements InteractionCreateEvent {

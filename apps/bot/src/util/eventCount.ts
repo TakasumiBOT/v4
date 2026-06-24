@@ -1,6 +1,6 @@
 import { EventType } from "@takasumibot-v4/db";
 import { shardRedis } from "@/util/redis";
-import { env } from "@/util/Env";
+import { botEnv as env } from "@takasumibot-v4/env/bot";
 import eventCountApplyToSql from "@/util/eventCountApplyToSql";
 
 const eventCount = async (eventType: EventType, isBot: boolean) => {

@@ -15,7 +15,7 @@ import { relative } from "path";
 import Report from "@/util/Report";
 import leven from "@/util/leven";
 import RateLimit from "@/util/RateLimit";
-import { prisma } from "@/util/db";
+import { prisma } from "@takasumibot-v4/db";
 import Random from "@/util/Random";
 
 class HiroyukiEvent implements MessageCreateEvent {

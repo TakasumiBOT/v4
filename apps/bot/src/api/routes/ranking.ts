@@ -1,5 +1,5 @@
 import { Elysia } from "elysia";
-import { prisma } from "@/util/db";
+import { prisma } from "@takasumibot-v4/db";
 import { fetchAndCacheUser } from "@/util/getDiscordUser";
 
 const ranking = new Elysia({ prefix: "/v3/ranking" }).get(

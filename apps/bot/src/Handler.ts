@@ -22,7 +22,7 @@ import {
   GuildMember,
   PrimaryEntryPointCommandInteraction,
 } from "discord.js";
-import { prisma } from "@/util/db";
+import { prisma } from "@takasumibot-v4/db";
 import { disableCommand } from "@takasumibot-v4/db";
 import EventLoader from "@/EventLoader";
 import fs from "fs";

@@ -9,7 +9,7 @@ import { SubCommand, ValidSubCommandInteraction } from "@/@types/Util";
 import CommandUtils from "@/util/CommandUtils";
 import config from "@/config";
 import Fetch from "@/util/Fetch";
-import { prisma } from "@/util/db";
+import { prisma } from "@takasumibot-v4/db";
 
 class MemberSubCommand implements SubCommand {
   public readonly client: Client;

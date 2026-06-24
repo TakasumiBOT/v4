@@ -12,7 +12,7 @@ import { InteractionCreateEvent } from "@/@types/Util";
 import config from "@/config";
 import Report from "@/util/Report";
 import { relative } from "path";
-import { prisma } from "@/util/db";
+import { prisma } from "@takasumibot-v4/db";
 
 class TermsAgreeEvent implements InteractionCreateEvent {
   public readonly client: Client;

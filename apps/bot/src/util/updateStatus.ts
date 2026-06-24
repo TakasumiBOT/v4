@@ -1,6 +1,6 @@
 import { Client } from "discord.js";
 import { shardRedis } from "@/util/redis";
-import { env } from "@/util/Env";
+import { botEnv as env } from "@takasumibot-v4/env/bot";
 
 async function updateStatus(client: Client) {
   try {

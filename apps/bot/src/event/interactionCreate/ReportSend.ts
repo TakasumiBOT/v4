@@ -13,7 +13,7 @@ import { relative } from "path";
 import { reportActionType, reportTargetType } from "@takasumibot-v4/db";
 import Fetch from "@/util/Fetch";
 import Mute from "@/util/Mute";
-import { prisma } from "@/util/db";
+import { prisma } from "@takasumibot-v4/db";
 
 class ReportSendEvent implements InteractionCreateEvent {
   public readonly client: Client;

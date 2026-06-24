@@ -17,7 +17,7 @@ import config from "@/config";
 import CommandUtils from "@/util/CommandUtils";
 import Report from "@/util/Report";
 import { relative } from "path";
-import { prisma } from "@/util/db";
+import { prisma } from "@takasumibot-v4/db";
 import sendGlobalChat from "@/util/sendGlobalChat";
 import deleteWebhook from "@/util/deleteWebhook";
 import Random from "@/util/Random";

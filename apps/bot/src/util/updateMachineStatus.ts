@@ -1,6 +1,6 @@
 import { shardRedis } from "@/util/redis";
 import getCpuStatus from "@/util/getCpuStatus";
-import { env } from "@/util/Env";
+import { botEnv as env } from "@takasumibot-v4/env/bot";
 import getMemoryStatus from "@/util/getMemoryStatus";
 
 async function updateMachineStatus() {

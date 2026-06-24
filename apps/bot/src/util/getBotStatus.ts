@@ -1,4 +1,4 @@
-import { prisma } from "@/util/db";
+import { prisma } from "@takasumibot-v4/db";
 
 type BotStatusType =
   | "totalCmd"

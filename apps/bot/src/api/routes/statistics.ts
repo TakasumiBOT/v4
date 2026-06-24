@@ -1,5 +1,5 @@
 import { Elysia, status } from "elysia";
-import { prisma } from "@/util/db";
+import { prisma } from "@takasumibot-v4/db";
 import config from "@/config";
 import getEventStatus from "@/util/getEventStatus";
 import { EventType } from "@takasumibot-v4/db";

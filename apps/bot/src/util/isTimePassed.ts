@@ -1,5 +1,5 @@
 import createId from "@/util/createId";
-import { prisma } from "@/util/db";
+import { prisma } from "@takasumibot-v4/db";
 
 const isTimePassed = async (
   userId: string,

@@ -9,7 +9,7 @@ import {
   PartialGuildMember,
 } from "discord.js";
 import { GuildMemberAddEvent } from "@/@types/Util";
-import { prisma } from "@/util/db";
+import { prisma } from "@takasumibot-v4/db";
 import config from "@/config";
 import { relative } from "path";
 import Report from "@/util/Report";

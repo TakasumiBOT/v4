@@ -1,6 +1,6 @@
 import { Client, Colors } from "discord.js";
 import cron from "node-cron";
-import { prisma } from "@/util/db";
+import { prisma } from "@takasumibot-v4/db";
 import Log from "@/util/Log";
 import getMemoryStatus from "@/util/getMemoryStatus";
 import getUserCount from "@/util/getUserCount";

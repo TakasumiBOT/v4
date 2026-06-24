@@ -1,6 +1,6 @@
 import { Client, BaseInteraction, InteractionResponse } from "discord.js";
 import { InteractionCreateEvent } from "@/@types/Util";
-import { prisma } from "@/util/db";
+import { prisma } from "@takasumibot-v4/db";
 
 class ProductListAutocompleteEvent implements InteractionCreateEvent {
   public readonly client: Client;

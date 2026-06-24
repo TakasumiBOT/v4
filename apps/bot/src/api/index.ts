@@ -1,7 +1,7 @@
 import { Elysia } from "elysia";
 import { cors } from "@elysiajs/cors";
 import { openapi } from "@elysiajs/openapi";
-import Log from ".@/util/Log";
+import Log from "@/util/Log";
 import getAuth from "@/routes/auth/get";
 import updateAuth from "@/routes/auth/update";
 import checkIP from "@/routes/auth/checkip";
@@ -16,7 +16,7 @@ import evaluateServer from "@/routes/evaluateServer";
 import alteration from "@/routes/admin/alteration";
 import pushNotifications from "@/routes/pushNotifications";
 import realtime from "@/routes/realtime";
-import { env } from ".@/util/Env";
+import { botEnv as env } from "@takasumibot-v4/env/bot";
 
 const app = new Elysia();
 

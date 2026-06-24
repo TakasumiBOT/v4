@@ -1,6 +1,6 @@
 import { muteGuild, muteIp, muteUser } from "@takasumibot-v4/db";
 import Notice from "@/util/Notice";
-import { prisma } from "@/util/db";
+import { prisma } from "@takasumibot-v4/db";
 
 class Mute {
   public static async getUser(userId: string): Promise<muteUser | null> {

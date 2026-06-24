@@ -8,7 +8,7 @@ import {
 import { SubCommand, ValidSubCommandInteraction } from "@/@types/Util";
 import CommandUtils from "@/util/CommandUtils";
 import config from "@/config";
-import { prisma } from "@/util/db";
+import { prisma } from "@takasumibot-v4/db";
 import CompanyMoney from "@/util/CompanyMoney";
 import Money from "@/util/Money";
 

@@ -2,8 +2,8 @@ import { APIGuild } from "discord.js";
 import { Elysia, redirect } from "elysia";
 import { guildBoard, guildCache } from "@takasumibot-v4/db";
 import { validateTurnstileToken } from "next-turnstile";
-import { prisma } from "@/util/db";
-import { env } from "@/util/Env";
+import { prisma } from "@takasumibot-v4/db";
+import { botEnv as env } from "@takasumibot-v4/env/bot";
 
 type guildBoardResponse = Omit<guildBoard, "inviteUrl"> & {
   guild: {

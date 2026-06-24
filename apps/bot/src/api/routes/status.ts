@@ -1,5 +1,5 @@
 import { Elysia } from "elysia";
-import { prisma } from "@/util/db";
+import { prisma } from "@takasumibot-v4/db";
 
 const statusInfo = new Elysia({ prefix: "/v3/status" }).get(
   "/",

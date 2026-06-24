@@ -1,7 +1,7 @@
 import { Client } from "discord.js";
 import { ReadyEvent } from "@/@types/Util";
 import updateStatus from "@/util/updateStatus";
-import { env } from "@/util/Env";
+import { botEnv as env } from "@takasumibot-v4/env/bot";
 import updateMachineStatus from "@/util/updateMachineStatus";
 
 class StatusEvent implements ReadyEvent {

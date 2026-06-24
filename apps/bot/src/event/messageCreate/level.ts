@@ -3,7 +3,7 @@ import { MessageCreateEvent } from "@/@types/Util";
 import config from "@/config";
 import crypto from "node:crypto";
 import { shardRedis } from "@/util/redis";
-import { prisma } from "@/util/db";
+import { prisma } from "@takasumibot-v4/db";
 
 const lv = config.level;
 

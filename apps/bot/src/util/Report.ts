@@ -1,7 +1,7 @@
 import { ErrorLogData } from "@/@types/Util";
 import { BaseInteraction, Message } from "discord.js";
 import Log from "@/util/Log";
-import { prisma } from "@/util/db";
+import { prisma } from "@takasumibot-v4/db";
 
 class Report {
   public static async sendError(data: ErrorLogData): Promise<void> {

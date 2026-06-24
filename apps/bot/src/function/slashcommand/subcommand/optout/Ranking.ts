@@ -9,7 +9,7 @@ import {
 } from "discord.js";
 import { SubCommand, ValidSubCommandInteraction } from "@/@types/Util";
 import CommandUtils from "@/util/CommandUtils";
-import { prisma } from "@/util/db";
+import { prisma } from "@takasumibot-v4/db";
 import { shardRedis } from "@/util/redis";
 
 class OptoutRankingSubCommand implements SubCommand {

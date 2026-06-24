@@ -5,7 +5,7 @@ import { relative } from "path";
 import Report from "@/util/Report";
 import calcTime from "@/util/calcTime";
 import matchId from "@/util/matchId";
-import { prisma } from "@/util/db";
+import { prisma } from "@takasumibot-v4/db";
 
 class AfkEvent implements MessageCreateEvent {
   public readonly client: Client;

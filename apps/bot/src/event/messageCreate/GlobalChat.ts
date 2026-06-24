@@ -13,7 +13,7 @@ import config from "@/config";
 import isAdmin from "@/util/isAdmin";
 import parseMessage from "@/util/parseMessage";
 import Fetch from "@/util/Fetch";
-import { prisma } from "@/util/db";
+import { prisma } from "@takasumibot-v4/db";
 import Mute from "@/util/Mute";
 import crypto from "node:crypto";
 import { gcerror404 } from "@/util/sendGlobalChat";
