@@ -1,6 +1,5 @@
 import { Guild, User } from "discord.js";
 import { prisma } from "@takasumibot-v4/db";
-import { reevaluate } from "@/util/EvaluateServer";
 
 class DBCache {
   public static async addUser(user: User): Promise<void> {
@@ -32,8 +31,6 @@ class DBCache {
   public static async addGuild(guild: Guild): Promise<void> {
     const onlineCount = guild.approximatePresenceCount || 0;
     const boostCount = guild.premiumSubscriptionCount || 0;
-
-    await reevaluate(guild);
 
     await prisma.guildCache.upsert({
       where: { id: guild.id },

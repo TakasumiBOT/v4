@@ -80,7 +80,7 @@ class MemberSubCommand implements SubCommand {
     } else {
       await prisma.admin.create({
         data: {
-          userId: interaction.user.id,
+          userId: user.id,
         },
       });
 

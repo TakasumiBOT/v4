@@ -51,7 +51,7 @@ class Handler {
     this.client.on(Events.MessageUpdate, this.onMessageUpdate.bind(this));
     this.client.on(Events.InteractionCreate, this.onInteractionCreate.bind(this));
     this.client.on(Events.GuildCreate, this.onGuildCreate.bind(this));
-    this.client.on(Events.GuildCreate, this.onGuildDelete.bind(this));
+    this.client.on(Events.GuildDelete, this.onGuildDelete.bind(this));
     this.client.on(Events.GuildMemberAdd, this.onGuildMemberAdd.bind(this));
     this.client.on(Events.GuildMemberRemove, this.onGuildMemberRemove.bind(this));
 
