@@ -1,11 +1,9 @@
 import { cors } from "@elysiajs/cors";
-import { env } from "@takasumibot-v4/env/server";
 import { Elysia } from "elysia";
 
 new Elysia()
   .use(
     cors({
-      origin: env.CORS_ORIGIN,
       methods: ["GET", "POST", "OPTIONS"],
     }),
   )
