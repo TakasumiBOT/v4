@@ -91,8 +91,6 @@ class Handler {
       return;
 
     Promise.all(this.loader.messageCreateEvent.map((event) => event.execute(message)));
-
-    await eventCount(EventType.messageCreate, message.author.bot);
   }
 
   private async onMessageUpdate(
@@ -212,8 +210,6 @@ class Handler {
 
     Promise.all(this.loader.interactionCreateEvent.map((event) => event.execute(interaction)));
 
-    await eventCount(EventType.interactionCreate, interaction.user.bot);
-
     DBCache.addUser(interaction.user);
 
     if (interaction.guild) {
@@ -223,26 +219,18 @@ class Handler {
 
   private async onGuildCreate(guild: Guild): Promise<void> {
     Promise.all(this.loader.guildCreateEvent.map((event) => event.execute(guild)));
-
-    await eventCount(EventType.guildCreate, false);
   }
 
   private async onGuildDelete(guild: Guild): Promise<void> {
     Promise.all(this.loader.guildDeleteEvent.map((event) => event.execute(guild)));
-
-    await eventCount(EventType.guildDelete, false);
   }
 
   private async onGuildMemberAdd(member: GuildMember): Promise<void> {
     Promise.all(this.loader.guildMemberAddEvent.map((event) => event.execute(member)));
-
-    await eventCount(EventType.guildMemberAdd, member.user.bot);
   }
 
   private async onGuildMemberRemove(member: GuildMember | PartialGuildMember): Promise<void> {
     Promise.all(this.loader.guildMemberRemoveEvent.map((event) => event.execute(member)));
-
-    await eventCount(EventType.guildMemberRemove, member.user.bot);
   }
 
   private async addHisotry(interaction: RepliableInteraction): Promise<void> {

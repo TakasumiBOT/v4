@@ -24,7 +24,6 @@ class Cron {
 
     cron.schedule("0 0 * * *", () => {
       this.deleteMuteIp();
-      this.deleteEventLog();
       this.resetGuildStatistics();
     });
 
@@ -107,20 +106,6 @@ class Cron {
     if (count === 0) return;
 
     Log.debug(`1か月以上経過した${count}個のMuteIpを削除しました`);
-  }
-
-  private async deleteEventLog(): Promise<void> {
-    const { count } = await prisma.eventLog.deleteMany({
-      where: {
-        loggedAt: {
-          lt: new Date(Date.now() - 2592000000),
-        },
-      },
-    });
-
-    if (count === 0) return;
-
-    Log.debug(`1か月以上経過した${count}個のEventLogを削除しました`);
   }
 
   private async deleteExpiredAuth(): Promise<void> {

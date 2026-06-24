@@ -25,6 +25,11 @@ enum reportActionType {
   delete
 }
 
+model disableCommand {
+  name         String   @id
+  registeredAt DateTime @default(now())
+}
+
 model muteUser {
   userId    String   @id
   reason    String
@@ -298,4 +303,15 @@ model LevelUser {
   score  BigInt @default(0)
 
   @@index([score(sort: Desc)])
+}
+
+model webauth {
+  id                      String   @unique
+  userId                  String
+  guildId                 String   @default("")
+  roleId                  String   @default("")
+  interactionWebhookId    String   @default("")
+  type                    String   @default("roleauth")
+  requiresSubAccountCheck Boolean  @default(false)
+  createdAt               DateTime @default(now())
 }
