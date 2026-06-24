@@ -58,7 +58,8 @@ class RankCommand implements Command {
 
     await interaction.deferReply();
     const user = interaction.options.getUser("user", false);
-    if (user?.bot) return await interaction.editReply({
+    if (user?.bot)
+      return await interaction.editReply({
         embeds: [
           {
             color: Colors.Red,

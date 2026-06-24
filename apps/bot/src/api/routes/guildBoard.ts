@@ -1,6 +1,6 @@
 import { APIGuild } from "discord.js";
 import { Elysia, redirect } from "elysia";
-import { guildBoard, guildCache } from "@/generated/prisma/client";
+import { guildBoard, guildCache } from "@takasumibot-v4/db";
 import { validateTurnstileToken } from "next-turnstile";
 import { prisma } from "@/util/db";
 import { env } from "@/util/Env";

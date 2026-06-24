@@ -1,4 +1,4 @@
-import { EventType } from "@/generated/prisma/client";
+import { EventType } from "@takasumibot-v4/db";
 import { shardRedis } from "@/util/redis";
 import { env } from "@/util/Env";
 import eventCountApplyToSql from "@/util/eventCountApplyToSql";

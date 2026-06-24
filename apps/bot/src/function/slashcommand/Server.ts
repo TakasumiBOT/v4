@@ -12,7 +12,7 @@ import {
   ChannelType,
 } from "discord.js";
 import { relative } from "path";
-import { guildStatistics } from "@/generated/prisma/client";
+import { guildStatistics } from "@takasumibot-v4/db";
 import { Command, CommandType } from "@/@types/Util";
 import Report from "@/util/Report";
 import config from "@/config";

@@ -1,4 +1,4 @@
-import { muteGuild, muteIp, muteUser } from "@/generated/prisma/client";
+import { muteGuild, muteIp, muteUser } from "@takasumibot-v4/db";
 import Notice from "@/util/Notice";
 import { prisma } from "@/util/db";
 

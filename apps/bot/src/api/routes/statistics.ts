@@ -2,7 +2,7 @@ import { Elysia, status } from "elysia";
 import { prisma } from "@/util/db";
 import config from "@/config";
 import getEventStatus from "@/util/getEventStatus";
-import { EventType } from "@/generated/prisma/client";
+import { EventType } from "@takasumibot-v4/db";
 
 const statistics = new Elysia({ prefix: "/v3/statistics" }).get(
   "/",

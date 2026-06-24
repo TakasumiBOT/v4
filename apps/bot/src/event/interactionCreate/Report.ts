@@ -12,7 +12,7 @@ import { InteractionCreateEvent } from "@/@types/Util";
 import config from "@/config";
 import Report from "@/util/Report";
 import { relative } from "path";
-import { reportTargetType } from "@/generated/prisma/client";
+import { reportTargetType } from "@takasumibot-v4/db";
 import Fetch from "@/util/Fetch";
 import createId from "@/util/createId";
 import Mute from "@/util/Mute";

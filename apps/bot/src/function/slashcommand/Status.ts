@@ -22,7 +22,7 @@ import calcTime from "@/util/calcTime";
 import getBotStatus from "@/util/getBotStatus";
 import withSign from "@/util/withSign";
 import getEventStatus from "@/util/getEventStatus";
-import { EventType } from "@/generated/prisma/client";
+import { EventType } from "@takasumibot-v4/db";
 import getGuildCount from "@/util/getGuildCount";
 import getUserCount from "@/util/getUserCount";
 import getCpuStatus from "@/util/getCpuStatus";
