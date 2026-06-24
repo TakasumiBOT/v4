@@ -1,4 +1,4 @@
-import { env } from "./util/Env";
+import { botEnv as env } from "@takasumibot-v4/env/bot";
 
 const config = {
   clientId: "981314695543783484",

@@ -4,7 +4,7 @@ import Handler from "./Handler";
 import Cron from "./Cron";
 import Log from "./util/Log";
 import { ShardStats } from "./@types/Util";
-import { env } from "./util/Env";
+import { botEnv as env } from "@takasumibot-v4/env/bot";
 import { shardRedis } from "./util/redis";
 import updateStatus from "./util/updateStatus";
 import updateMachineStatus from "./util/updateMachineStatus";

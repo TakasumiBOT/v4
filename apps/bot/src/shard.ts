@@ -2,7 +2,7 @@ import { Shard, ShardingManager } from "discord.js";
 import Log from "./util/Log";
 import config from "./config";
 import Notice from "./util/Notice";
-import { env } from "./util/Env";
+import { botEnv as env } from "@takasumibot-v4/env/bot";
 //import "./util/redis"; //redisの接続処理のためにロード。副作用(接続処理)のみ動作します。
 
 const manager = new ShardingManager("./src/index.ts", {

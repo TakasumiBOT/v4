@@ -26,6 +26,8 @@
         "@elysiajs/cors": "^1.4.2",
         "@elysiajs/eden": "^1.4.9",
         "@elysiajs/openapi": "^1.4.15",
+        "@takasumibot-v4/db": "workspace:*",
+        "@takasumibot-v4/env": "workspace:*",
         "discord-api-types": "^0.38.49",
         "discord.js": "^14.26.4",
         "elysia": "^1.4.29",

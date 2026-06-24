@@ -1,5 +1,5 @@
 import { Elysia } from "elysia";
-import { env } from "@/util/Env";
+import { botEnv as env } from "@takasumibot-v4/env/bot";
 import Log from "@/util/Log";
 import { levelBodySchema } from "@/image-gen/schemas/level";
 import { RankCardBuilder } from "@/image-gen/components/rankCard";

@@ -7,8 +7,8 @@ import getUserCount from "./util/getUserCount";
 import getGuildCount from "./util/getGuildCount";
 import getCpuStatus from "./util/getCpuStatus";
 import { NotificationQueueService } from "./util/NotificationQueue";
-import { NotificationType } from "./generated/prisma/client";
-import { env } from "./util/Env";
+import { NotificationType } from "@takasumibot-v4/db";
+import { botEnv as env } from "@takasumibot-v4/env/bot";
 import { getShardStatus } from "./index";
 import { shardRedis } from "./util/redis";
 
