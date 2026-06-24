@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 import { pathToFileURL } from "url";
 import Log from "./util/Log";
-import {
+import type {
   InteractionCreateEvent,
   MessageCreateEvent,
   ReadyEvent,

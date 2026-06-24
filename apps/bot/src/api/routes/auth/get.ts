@@ -1,7 +1,7 @@
 import { Elysia, status, t } from "elysia";
 import { bearer } from "@elysiajs/bearer";
-import { prisma } from "@/util/db";
-import { env } from "@/util/Env";
+import { prisma } from "../../../util/db";
+import { env } from "../../../util/Env";
 
 const getAuth = new Elysia({ prefix: "/v3/auth/get" }).use(bearer()).get(
   "/:session",
