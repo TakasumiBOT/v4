@@ -1,43 +1,41 @@
 {
-  "name": "takasumibot-v4",
+  "name": "bot",
   "private": true,
-  "workspaces": {
-    "packages": [
-      "apps/*",
-      "packages/*"
-    ],
-    "catalog": {
-      "dotenv": "^17.2.2",
-      "zod": "^4.1.13",
-      "typescript": "^6",
-      "@types/bun": "^1.3.4"
-    }
-  },
   "type": "module",
+  "main": "src/index.ts",
   "scripts": {
-    "dev": "turbo dev",
-    "build": "turbo build",
-    "check-types": "turbo check-types",
-    "dev:server": "turbo -F server dev",
-    "db:push": "turbo -F @takasumibot-v4/db db:push",
-    "db:studio": "turbo -F @takasumibot-v4/db db:studio",
-    "db:generate": "turbo -F @takasumibot-v4/db db:generate",
-    "db:migrate": "turbo -F @takasumibot-v4/db db:migrate",
+    "start": "bun ./src/index.ts",
+    "check-types": "tsc",
+    "dev": "bun run --hot src/index.ts",
+    "build": "bun build --compile --minify --bytecode ./src/index.ts --outfile bot",
+    "build:prisma": "bun --bun prisma generate",
+    "migrate:dev": "bun --bun prisma migrate dev",
+    "view": "bun --bun prisma studio",
     "check": "oxlint && oxfmt --write",
     "format": "oxfmt --write"
   },
   "dependencies": {
-    "@takasumibot-v4/env": "workspace:*",
-    "dotenv": "catalog:",
-    "zod": "catalog:"
+    "@discordjs/rest": "^2.6.1",
+    "@prisma/adapter-pg": "^7.10.0",
+    "@t3-oss/env-core": "^0.13.11",
+    "discord-api-types": "^0.38.49",
+    "discord.js": "^14.26.4",
+    "elysia": "^1.4.29",
+    "node-cron": "^4.5.0",
+    "sharp": "^0.35.2",
+    "zod": "^4.5.4"
   },
   "devDependencies": {
-    "@takasumibot-v4/config": "workspace:*",
-    "@types/bun": "catalog:",
-    "oxfmt": "^0.53.0",
-    "oxlint": "^1.68.0",
-    "turbo": "^2.9.16",
-    "typescript": "catalog:"
+    "@prisma/client": "7",
+    "@types/bun": "latest",
+    "@types/node": "^26.4.0",
+    "@types/node-cron": "^3.0.11",
+    "@types/sharp": "^0.32.0",
+    "oxfmt": "^0.65.0",
+    "oxlint": "^1.80.0",
+    "prisma": "7"
   },
-  "packageManager": "bun@1.3.11"
+  "peerDependencies": {
+    "typescript": "^5"
+  }
 }
