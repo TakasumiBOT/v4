@@ -99,12 +99,6 @@ class RemovedEvent implements GuildDeleteEvent {
         guildId: guild.id,
       },
     });
-
-    await prisma.expandIgnore.deleteMany({
-      where: {
-        guildId: guild.id,
-      },
-    });
   }
 }
 

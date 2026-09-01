@@ -7,7 +7,6 @@ import { ShardStats } from "@/@types/Util";
 import { env } from "@/util/Env";
 import { shardRedis } from "@/util/redis";
 import updateStatus from "@/util/updateStatus";
-import updateMachineStatus from "@/util/updateMachineStatus";
 
 const client: Client = new Client({
   intents: [
@@ -82,7 +81,6 @@ new Cron(client);
 // MARK: Redis関連処理
 shardRedis.on("reconnecting", () => {
   updateStatus(client);
-  updateMachineStatus();
 });
 
 export const giveRole = async (userId: string, roleId: string, guildId: string): Promise<void> => {

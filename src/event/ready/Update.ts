@@ -1,8 +1,6 @@
 import { Client } from "discord.js";
 import { ReadyEvent } from "@/@types/Util";
 import updateStatus from "@/util/updateStatus";
-import { env } from "@/util/Env";
-import updateMachineStatus from "@/util/updateMachineStatus";
 
 class StatusEvent implements ReadyEvent {
   public readonly client: Client;
@@ -17,12 +15,6 @@ class StatusEvent implements ReadyEvent {
     setInterval(async () => {
       updateStatus(this.client);
     }, 20 * 1000);
-
-    if (env.SHARDS === env.SHARD_LIST.split(",")[0]) {
-      setInterval(async () => {
-        updateMachineStatus();
-      }, 20 * 1000);
-    }
   }
 }
 

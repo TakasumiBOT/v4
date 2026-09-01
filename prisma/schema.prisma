@@ -239,11 +239,6 @@ model upNoticeIgnore {
   createdAt DateTime @default(now())
 }
 
-model expandIgnore {
-  guildId   String   @id
-  createdAt DateTime @default(now())
-}
-
 model pin {
   channelId  String   @id
   messegeId  String

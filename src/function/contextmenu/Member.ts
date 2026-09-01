@@ -13,7 +13,6 @@ import {
 import { Command, CommandType } from "@/@types/Util";
 import config from "@/config";
 import CommandUtils from "@/util/CommandUtils";
-import parsePlatform from "@/util/parsePlatform";
 
 class MemberContextMenu implements Command {
   public readonly client: Client;
@@ -45,14 +44,6 @@ class MemberContextMenu implements Command {
       return;
 
     const member = interaction.options.getMember("user");
-
-    const status = {
-      online: "🟢オンライン",
-      offline: "⚫オフライン",
-      dnd: "⛔取り込み中",
-      idle: "🌙退席中",
-      invisible: "⚫オンライン状態を隠し中",
-    };
 
     if (!member || !("user" in member))
       return await interaction.reply({
@@ -97,13 +88,6 @@ class MemberContextMenu implements Command {
               {
                 name: "ニックネーム",
                 value: member.nickname || "未設定",
-                inline: true,
-              },
-              {
-                name: "ステータス",
-                value: member.presence?.status
-                  ? `${status[member.presence?.status]}\n${parsePlatform(member.presence) || ""}`
-                  : "取得不可",
                 inline: true,
               },
               {

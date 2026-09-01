@@ -162,50 +162,6 @@ class IgnoreSubCommand implements SubCommand {
           ],
         });
       }
-    } else if (type === "expand") {
-      const expandIgnoreData = await prisma.expandIgnore.findUnique({
-        where: {
-          guildId: interaction.guildId,
-        },
-      });
-
-      if (!expandIgnoreData) {
-        await prisma.expandIgnore.create({
-          data: {
-            guildId: interaction.guildId,
-          },
-        });
-
-        await interaction.reply({
-          embeds: [
-            {
-              color: Colors.Green,
-              author: {
-                name: "メッセージの展開を無効にしました",
-                icon_url: config.image.successIcon,
-              },
-            },
-          ],
-        });
-      } else {
-        await prisma.expandIgnore.delete({
-          where: {
-            guildId: interaction.guildId,
-          },
-        });
-
-        await interaction.reply({
-          embeds: [
-            {
-              color: Colors.Green,
-              author: {
-                name: "メッセージの展開を有効にしました",
-                icon_url: config.image.successIcon,
-              },
-            },
-          ],
-        });
-      }
     } else {
       await interaction.reply({
         embeds: [
@@ -234,8 +190,7 @@ class IgnoreSubCommand implements SubCommand {
           .addChoices(
             { name: "Bump通知", value: "bump" },
             { name: "Dissoku Up通知", value: "dissoku" },
-            { name: "UP通知", value: "up" },
-            { name: "メッセージ展開", value: "expand" },
+            { name: "UP通知", value: "up" }
           ),
       );
   }

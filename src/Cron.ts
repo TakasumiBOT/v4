@@ -8,7 +8,6 @@ import { NotificationQueueService } from "@/util/NotificationQueue";
 import { NotificationType } from "@/generated";
 import { env } from "@/util/Env";
 import { getShardStatus } from "@/index";
-import { shardRedis } from "@/util/redis";
 
 class Cron {
   public readonly client: Client;

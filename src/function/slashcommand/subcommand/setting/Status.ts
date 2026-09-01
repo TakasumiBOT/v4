@@ -70,12 +70,6 @@ class StatusSubCommand implements SubCommand {
       },
     });
 
-    const expandIgnoreData = await prisma.expandIgnore.findUnique({
-      where: {
-        guildId: interaction.guildId,
-      },
-    });
-
     await interaction.reply({
       embeds: [
         {
@@ -103,7 +97,7 @@ class StatusSubCommand implements SubCommand {
             },
             {
               name: "機能設定",
-              value: `BUMP通知: ${bumpNoticeIgnoreData ? "無効" : "有効"}\nDISSOKU通知: ${dissokuNoticeIgnoreData ? "無効" : "有効"}\nUP通知: ${upNoticeIgnoreData ? "無効" : "有効"}\nメッセージ展開: ${expandIgnoreData ? "無効" : "有効"}`,
+              value: `BUMP通知: ${bumpNoticeIgnoreData ? "無効" : "有効"}\nDISSOKU通知: ${dissokuNoticeIgnoreData ? "無効" : "有効"}\nUP通知: ${upNoticeIgnoreData ? "無効" : "有効"}`,
             },
           ],
         },

@@ -11,8 +11,6 @@ import {
 } from "discord.js";
 import { MessageCreateEvent } from "@/@types/Util";
 import config from "@/config";
-import { relative } from "path";
-import Report from "@/util/Report";
 import leven from "@/util/leven";
 import RateLimit from "@/util/RateLimit";
 import { prisma } from "@/util/db";
@@ -180,13 +178,6 @@ class HiroyukiEvent implements MessageCreateEvent {
 
       await webhook.send(messageData);
     } catch (error) {
-      if (error instanceof Error) {
-        Report.sendMessageError(
-          message,
-          error.stack || `不明なエラー: ${relative(process.cwd(), __filename)}`,
-        );
-      }
-
       await prisma.hiroyuki.delete({
         where: {
           guildId: message.guildId,
