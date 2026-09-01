@@ -23,7 +23,8 @@
     "db:studio": "turbo -F @takasumibot-v4/db db:studio",
     "db:generate": "turbo -F @takasumibot-v4/db db:generate",
     "db:migrate": "turbo -F @takasumibot-v4/db db:migrate",
-    "check": "oxlint && oxfmt --write"
+    "check": "oxlint && oxfmt --write",
+    "format": "oxfmt --write"
   },
   "dependencies": {
     "@takasumibot-v4/env": "workspace:*",

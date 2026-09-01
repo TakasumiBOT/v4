@@ -1,0 +1,1116 @@
+[
+  {
+    "type": "fun",
+    "name": "5000",
+    "description": "5000兆円ジェネレーター",
+    "example": ["/5000 上の文字 下の文字"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "bot",
+    "name": "about",
+    "description": "ABOUTを表示します",
+    "example": ["/about"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "money",
+    "name": "account",
+    "description": "アカウントの状態や設定をします",
+    "example": [],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": [
+      {
+        "name": "item",
+        "description": "所有しているアイテムを確認します",
+        "example": ["/account item"],
+        "note": "なし",
+        "userPermission": ["必要なし"],
+        "botPermission": ["必要なし"]
+      },
+      {
+        "name": "job",
+        "description": "職業を変更します",
+        "example": ["/account job"],
+        "note": "なし",
+        "userPermission": ["必要なし"],
+        "botPermission": ["必要なし"]
+      },
+      {
+        "name": "register",
+        "description": "アカウントを登録します",
+        "example": ["/account register"],
+        "note": "なし",
+        "userPermission": ["必要なし"],
+        "botPermission": ["必要なし"]
+      },
+      {
+        "name": "status",
+        "description": "ステータスを確認します",
+        "example": ["/account status"],
+        "note": "なし",
+        "userPermission": ["必要なし"],
+        "botPermission": ["必要なし"]
+      }
+    ]
+  },
+  {
+    "type": "othor",
+    "name": "afk",
+    "description": "AFK(留守電)を設定します",
+    "example": ["/afk お出かけ中"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "manage",
+    "name": "auth",
+    "description": "メンバー認証を設定します",
+    "example": ["/auth 標準 @role"],
+    "userPermission": ["管理者"],
+    "botPermission": ["ロールの管理", "チャンネルを見る", "メッセージを送信"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "info",
+    "name": "avatar",
+    "description": "ユーザーのアイコンを表示します",
+    "example": ["/avatar @User", "/avatar 9813146955437836999"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "manage",
+    "name": "ban",
+    "description": "ユーザーをサーバーからBANします",
+    "example": ["/ban @User", "/ban @User 規約違反のため", "/ban 1066168542669590598"],
+    "userPermission": ["メンバーをBAN"],
+    "botPermission": ["メンバーをBAN"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "money",
+    "name": "bank",
+    "description": "銀行に入金・出金します。(全額取引: 持っているお金より大きい数値を入力)",
+    "example": ["/bank 入金 1145", "/bank 出金 14114"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "tool",
+    "name": "button",
+    "description": "URLのボタンを生成します",
+    "example": ["/button ボタン https://google.com"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "fun",
+    "name": "char",
+    "description": "意図的に文字化や復元をします",
+    "example": ["/char 文字化け moji", "/char 復元 阿懿燠ヱ淤"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "manage",
+    "name": "colorrole",
+    "description": "指定した色のロールを作成します",
+    "example": ["/colorrole ロール名 赤"],
+    "userPermission": ["ロールの管理"],
+    "botPermission": ["ロールの管理"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "money",
+    "name": "company",
+    "description": "会社の作成や操作をします",
+    "example": [],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": [
+      {
+        "name": "bonus",
+        "description": "社員にボーナスを支払います",
+        "example": ["/company bonus User 10000"],
+        "note": "なし",
+        "userPermission": ["必要なし"],
+        "botPermission": ["必要なし"]
+      },
+      {
+        "name": "create",
+        "description": "会社を作成します",
+        "example": ["/company create ○○会社 100000 1000"],
+        "note": "なし",
+        "userPermission": ["必要なし"],
+        "botPermission": ["必要なし"]
+      },
+      {
+        "name": "employee",
+        "description": "社員を招待・削除します",
+        "example": ["/company employee 招待", "/company employee 削除 @User"],
+        "note": "なし",
+        "userPermission": ["必要なし"],
+        "botPermission": ["必要なし"]
+      },
+      {
+        "name": "info",
+        "description": "会社の情報を表示します",
+        "example": ["/company info"],
+        "note": "なし",
+        "userPermission": ["必要なし"],
+        "botPermission": ["必要なし"]
+      },
+      {
+        "name": "join",
+        "description": "会社に参加します",
+        "example": ["/company join fh3wRfs3"],
+        "note": "なし",
+        "userPermission": ["必要なし"],
+        "botPermission": ["必要なし"]
+      },
+      {
+        "name": "leave",
+        "description": "会社から脱退します",
+        "example": ["/company leave"],
+        "note": "なし",
+        "userPermission": ["必要なし"],
+        "botPermission": ["必要なし"]
+      },
+      {
+        "name": "setting",
+        "description": "会社の設定をします",
+        "example": ["/company setting 賃金 1500"],
+        "note": "なし",
+        "userPermission": ["必要なし"],
+        "botPermission": ["必要なし"]
+      }
+    ]
+  },
+  {
+    "type": "tool",
+    "name": "crypto",
+    "description": "暗号を生成・復号します",
+    "example": ["/crypto 暗号化 Apple key", "/crypto 復号化 d1faf7e95c key"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "AES-256-ECBを使用して暗号化しています",
+    "subcommands": []
+  },
+  {
+    "type": "money",
+    "name": "debt",
+    "description": "借金の借入・返済をします",
+    "example": ["/debt 借入 8105", "/debt 返済 14114"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "manage",
+    "name": "del",
+    "description": "メッセージを一括で削除します",
+    "example": ["/del 10", "/del 20 @User"],
+    "userPermission": ["メッセージの管理"],
+    "botPermission": ["チャンネルを見る", "メッセージの管理"],
+    "note": "2週間以上前のメッセージは削除できません",
+    "subcommands": []
+  },
+  {
+    "type": "money",
+    "name": "dice",
+    "description": "数字をそろえるゲームをします",
+    "example": ["/dice 100"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "money",
+    "name": "economy",
+    "description": "経済システムの情報を表示します",
+    "example": ["/economy"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "info",
+    "name": "emoji",
+    "description": "指定した絵文字の情報を表示します",
+    "example": ["/emoji 🤔"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "money",
+    "name": "exchange",
+    "description": "コインとチップを交換します",
+    "example": ["/exchange コインへ 1000"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "チップからコインへの交換には15％の税金がかかります",
+    "subcommands": []
+  },
+  {
+    "type": "bot",
+    "name": "follow",
+    "description": "BOTのアナウンスチャンネルを追加します",
+    "example": ["/follow アナウンス"],
+    "userPermission": ["チャンネルの管理"],
+    "botPermission": ["チャンネルの管理"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "search",
+    "name": "gif",
+    "description": "GIF画像を検索して表示します",
+    "example": ["/gif Apple"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "money",
+    "name": "gift",
+    "description": "ギフトの受け取りや作成をします",
+    "example": [],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": [
+      {
+        "name": "create",
+        "description": "ギフトを作成します",
+        "example": ["/gift create 1000"],
+        "note": "なし",
+        "userPermission": ["必要なし"],
+        "botPermission": ["必要なし"]
+      },
+      {
+        "name": "get",
+        "description": "ギフトを受け取ります",
+        "example": ["/gift get A2EF4d"],
+        "note": "なし",
+        "userPermission": ["必要なし"],
+        "botPermission": ["必要なし"]
+      },
+      {
+        "name": "list",
+        "description": "作成したギフトを表示します",
+        "example": ["/gift list"],
+        "note": "なし",
+        "userPermission": ["必要なし"],
+        "botPermission": ["必要なし"]
+      }
+    ]
+  },
+  {
+    "type": "server",
+    "name": "globalchat",
+    "description": "色々なサーバーと繋がるグローバルチャットを有効化、無効化します",
+    "example": ["/globalchat"],
+    "userPermission": ["チャンネルの管理"],
+    "botPermission": [
+      "ウェブフックの管理",
+      "リアクションの追加",
+      "チャンネルを見る",
+      "メッセージを送信",
+      "チャンネルの管理"
+    ],
+    "note": "会話を開始するにはWeb認証を利用してユーザー認証する必要があります",
+    "subcommands": []
+  },
+  {
+    "type": "tool",
+    "name": "graph",
+    "description": "数式からグラフを生成します",
+    "example": ["/graph 2*x", "/graph x^3 -10 10"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "利用可能な文字・関数: 1234567890+-*/()^、pi、e、sqrt、log、abs、sin、cos、tan、x",
+    "subcommands": []
+  },
+  {
+    "type": "money",
+    "name": "guess",
+    "description": "数字あてゲームをします",
+    "example": ["/guess 100 2"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "manage",
+    "name": "guideline",
+    "description": "サーバーのガイドラインを作成します",
+    "example": ["/guideline @Role"],
+    "userPermission": ["ロールの管理"],
+    "botPermission": ["ロールの管理", "チャンネルを見る", "メッセージを送信"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "tool",
+    "name": "hash",
+    "description": "ハッシュを生成します",
+    "example": ["/hash テキスト SHA256"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "othor",
+    "name": "help",
+    "description": "ヘルプを表示します",
+    "example": ["/help", "/help user"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "fun",
+    "name": "hiroyuki",
+    "description": "ひろゆきを召喚します",
+    "example": ["/hiroyuki"],
+    "userPermission": ["チャンネルの管理"],
+    "botPermission": [
+      "ウェブフックの管理",
+      "チャンネルを見る",
+      "メッセージを送信",
+      "メッセージの管理"
+    ],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "fun",
+    "name": "homo",
+    "description": "数値をある法則に従って変換します",
+    "example": ["/homo 3141592"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "info",
+    "name": "inviter",
+    "description": "招待数ランキングを表示します",
+    "example": ["/inviter"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["サーバーの管理"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "tool",
+    "name": "ip",
+    "description": "IPアドレスの詳細情報を表示します",
+    "example": ["/ip 8.8.8.8", "/ip 2001:4860:4860::8844"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "manage",
+    "name": "kick",
+    "description": "メンバーをサーバーからキックします",
+    "example": ["/kick @User", "/kick @User 規約違反のため"],
+    "userPermission": ["メンバーをキック"],
+    "botPermission": ["メンバーをキック"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "money",
+    "name": "leaderboard",
+    "description": "経済のランキングを表示します",
+    "example": ["/leaderboard 総資産"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "money",
+    "name": "lottery",
+    "description": "宝くじを購入します",
+    "example": ["/lottery 3"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "宝くじは最大100枚まで購入できます\n日曜日と木曜日の正午(12時)に抽選されます",
+    "subcommands": []
+  },
+  {
+    "type": "contextmenu",
+    "name": "Make it a Quote",
+    "description": "Make it a Quoteを生成します",
+    "example": [],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "tool",
+    "name": "math",
+    "description": "式を計算します",
+    "example": ["/math 4 * 25"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "tool",
+    "name": "mc",
+    "description": "Minecraftサーバーの情報を表示します",
+    "example": ["/mc Java版 2b2t.jp"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "manage",
+    "name": "moderate",
+    "description": "AutoModを使用したモデレート機能を設定します",
+    "example": ["/moderate スパムのブロック"],
+    "userPermission": ["サーバーの管理"],
+    "botPermission": ["サーバーの管理"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "tool",
+    "name": "nslookup",
+    "description": "DNS情報を取得します",
+    "example": ["/nslookup google.com"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "fun",
+    "name": "number",
+    "description": "進数の変換をします",
+    "example": ["/number 10進数 2進数 120"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "search",
+    "name": "package",
+    "description": "パッケージを検索して表示します",
+    "example": ["/package NPM discord.js", "/package PYPI discord.py"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "manage",
+    "name": "panel",
+    "description": "役職パネルを作成します",
+    "example": ["/panel title @Role1 @Role2"],
+    "userPermission": ["ロールの管理"],
+    "botPermission": ["チャンネルを見る", "メッセージを送信", "ロールの管理"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "money",
+    "name": "pay",
+    "description": "アイテムを購入します",
+    "example": ["/pay アイテム名"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "info",
+    "name": "permission",
+    "description": "ユーザーの権限を表示します",
+    "example": ["/permission @User"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "money",
+    "name": "product",
+    "description": "商品を売買します",
+    "example": [],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "商品を売買するには、会社に所属している必要があります",
+    "subcommands": [
+      {
+        "name": "buy",
+        "description": "商品を購入します",
+        "example": ["/product buy 商品ID"],
+        "note": "なし",
+        "userPermission": ["必要なし"],
+        "botPermission": ["必要なし"]
+      },
+      {
+        "name": "create",
+        "description": "商品を作成します",
+        "example": ["/product create"],
+        "note": "なし",
+        "userPermission": ["必要なし"],
+        "botPermission": ["必要なし"]
+      },
+      {
+        "name": "list",
+        "description": "商品の一覧を表示します",
+        "example": ["/product list"],
+        "note": "なし",
+        "userPermission": ["必要なし"],
+        "botPermission": ["必要なし"]
+      }
+    ]
+  },
+  {
+    "type": "server",
+    "name": "publish",
+    "description": "アナウンスチャンネルで送信されたメッセージを自動で公開します",
+    "example": ["/publish"],
+    "userPermission": [
+      "チャンネルの管理",
+      "メッセージの管理",
+      "リアクションの追加",
+      "メッセージの管理"
+    ],
+    "botPermission": ["チャンネルを見る"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "tool",
+    "name": "qr",
+    "description": "QRコードの読み取りや生成をします",
+    "example": ["/qr 読み込む https://example.com/qr.png", "/qr 生成 Apple 高"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "tool",
+    "name": "rank",
+    "description": "ユーザーのランクを表示します",
+    "example": ["/rank @ユーザー", "/rank @ユーザー グローバル"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "tool",
+    "name": "ranking",
+    "description": "ランキング一覧を表示します。",
+    "example": ["/ranking サーバー", "/rank グローバル 2144"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "server",
+    "name": "register",
+    "description": "サーバー掲示板に登録や登録を解除します",
+    "example": ["/register"],
+    "userPermission": ["管理者"],
+    "botPermission": ["招待を作成"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "bot",
+    "name": "report",
+    "description": "サポートに通報します",
+    "example": ["/report"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "manage",
+    "name": "reset",
+    "description": "実行したチャンネルを完全にリセットします",
+    "example": ["/reset"],
+    "userPermission": ["管理者"],
+    "botPermission": ["チャンネルの管理", "チャンネルを見る", "メッセージを送信"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "fun",
+    "name": "retranslate",
+    "description": "様々な言語で翻訳を繰り返します",
+    "example": ["/retranslate こんにちは"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "info",
+    "name": "role",
+    "description": "ロールの内容を表示します",
+    "example": ["/role @Notice"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "info",
+    "name": "rolecount",
+    "description": "それぞれのロールを持っている人数と割合を表示します",
+    "example": ["/rolecount"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "money",
+    "name": "roll",
+    "description": "ガチャを回します",
+    "example": ["/roll"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "ガチャを回すには30コイン必要です\n一回に3個排出します",
+    "subcommands": []
+  },
+  {
+    "type": "tool",
+    "name": "safeweb",
+    "description": "Webサイトの安全性を評価します",
+    "example": ["/safeweb https://google.com/"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "tool",
+    "name": "script",
+    "description": "プログラムを実行します",
+    "example": ["/script"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "info",
+    "name": "server",
+    "description": "サーバーの情報を表示します",
+    "example": ["/server"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "othor",
+    "name": "setting",
+    "description": "サーバーの設定を変更します",
+    "example": [],
+    "userPermission": ["管理者"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": [
+      {
+        "name": "bump",
+        "description": "Bump通知時にメンションするロールを設定します",
+        "example": ["/setting bump @通知"],
+        "note": "なし",
+        "userPermission": ["管理者"],
+        "botPermission": ["チャンネルを見る", "メッセージを送信"]
+      },
+      {
+        "name": "dissoku",
+        "description": "Dissoku Up通知時にメンションするロールを設定します",
+        "example": ["/setting dissoku @通知"],
+        "note": "なし",
+        "userPermission": ["管理者"],
+        "botPermission": ["チャンネルを見る", "メッセージを送信"]
+      },
+      {
+        "name": "ignore",
+        "description": "BOTの機能を無効化します",
+        "example": ["/setting ignore Bump通知"],
+        "note": "なし",
+        "userPermission": ["管理者"],
+        "botPermission": ["必要なし"]
+      },
+      {
+        "name": "join",
+        "description": "参加メッセージを設定(更新)します。無効にする場合は message オプションを空欄にしてください。",
+        "example": ["/setting join [User]が参加しました"],
+        "note": "なし",
+        "userPermission": ["管理者"],
+        "botPermission": ["チャンネルを見る", "メッセージを送信", "ウェブフックの管理"]
+      },
+      {
+        "name": "leave",
+        "description": "退出メッセージを設定します",
+        "example": ["/setting leave [User]が退出しました"],
+        "note": "なし",
+        "userPermission": ["管理者"],
+        "botPermission": ["チャンネルを見る", "メッセージを送信", "ウェブフックの管理"]
+      },
+      {
+        "name": "stats",
+        "description": "サーバーの統計の収集を有効化、無効化します",
+        "example": ["/setting stats"],
+        "note": "統計情報は/serverで確認できます\n統計情報は1日おきにリセットされます",
+        "userPermission": ["管理者"],
+        "botPermission": ["必要なし"]
+      },
+      {
+        "name": "status",
+        "description": "サーバーの設定状況を確認します",
+        "example": ["/setting status"],
+        "note": "なし",
+        "userPermission": ["管理者"],
+        "botPermission": ["必要なし"]
+      },
+      {
+        "name": "up",
+        "description": "BotのUp通知時にメンションするロールを設定します",
+        "example": ["/setting up @通知"],
+        "note": "なし",
+        "userPermission": ["管理者"],
+        "botPermission": ["チャンネルを見る", "メッセージを送信"]
+      }
+    ]
+  },
+  {
+    "type": "tool",
+    "name": "short",
+    "description": "短縮URLを作成します",
+    "example": ["/short https://google.com"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "使用には10秒のクールタイムがあります",
+    "subcommands": []
+  },
+  {
+    "type": "tool",
+    "name": "skin",
+    "description": "マインクラフトのスキンを検索します",
+    "example": ["/skin User"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "manage",
+    "name": "slowmode",
+    "description": "チャンネルに低速モードを設定します",
+    "example": ["/slowmode 10"],
+    "userPermission": ["チャンネルの管理"],
+    "botPermission": ["チャンネルの管理"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "othor",
+    "name": "snowflake",
+    "description": "Snowflakeを解析します",
+    "example": ["/snowflake 9876919198104435"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "bot",
+    "name": "status",
+    "description": "BOTのステータスを表示します",
+    "example": ["/status"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "money",
+    "name": "steal",
+    "description": "コインをランダムなプレイヤーから盗みます",
+    "example": ["/steal"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "信用ポイントを8失い、成功すると相手の所持金の一部を盗みます。失敗すると盗ろうとした分の2分の1のお金を失います\nお守りを持っている人からは盗めません",
+    "subcommands": []
+  },
+  {
+    "type": "money",
+    "name": "stock",
+    "description": "株の売買をします",
+    "example": [],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": [
+      {
+        "name": "buy",
+        "description": "株を購入します",
+        "example": ["/stock buy ○○会社 10"],
+        "note": "なし",
+        "userPermission": ["必要なし"],
+        "botPermission": ["必要なし"]
+      },
+      {
+        "name": "graph",
+        "description": "株価チャートを表示します",
+        "example": ["/stock graph ○○会社"],
+        "note": "なし",
+        "userPermission": ["必要なし"],
+        "botPermission": ["必要なし"]
+      },
+      {
+        "name": "list",
+        "description": "持ち株情報を表示します",
+        "example": ["/stock lsit"],
+        "note": "なし",
+        "userPermission": ["必要なし"],
+        "botPermission": ["必要なし"]
+      },
+      {
+        "name": "sell",
+        "description": "株を売却します",
+        "example": ["/stock sell ○○会社 10"],
+        "note": "なし",
+        "userPermission": ["必要なし"],
+        "botPermission": ["必要なし"]
+      }
+    ]
+  },
+  {
+    "type": "manage",
+    "name": "ticket",
+    "description": "チケット機能を作成します",
+    "example": ["/ticket #Category", "/ticket #Category Title Description"],
+    "userPermission": ["メッセージの管理", "チャンネルの管理"],
+    "botPermission": ["チャンネルを見る", "メッセージを送信", "チャンネルの管理"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "manage",
+    "name": "timeout",
+    "description": "メンバーをタイムアウトします",
+    "example": ["/timeout @User", "/timeout @User 1000 スパムのため"],
+    "userPermission": ["メンバーをタイムアウト"],
+    "botPermission": ["メンバーをタイムアウト"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "server",
+    "name": "top",
+    "description": "チャンネルの最初のメッセージのリンクを表示します",
+    "example": ["/top", "/top #雑談"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["メッセージ履歴を見る", "チャンネルを見る"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "tool",
+    "name": "translate",
+    "description": "テキストを翻訳します",
+    "example": ["/translate hello 日本語"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "server",
+    "name": "up",
+    "description": "サーバー掲示板の順位を上げます",
+    "example": ["/up"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["招待を作成"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "info",
+    "name": "user",
+    "description": "ユーザーの情報を表示します",
+    "example": ["/user @User", "/user 98131191981054804"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "manage",
+    "name": "warn",
+    "description": "メンバーを警告します",
+    "example": ["/warn @User"],
+    "userPermission": ["サーバーの管理"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "tool",
+    "name": "webshot",
+    "description": "Webサイトのスクリーンショットを撮影します",
+    "example": ["/webshot https://google.com/"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "search",
+    "name": "whois",
+    "description": "Whois検索をします",
+    "example": ["/whois google.com"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "search",
+    "name": "wiki",
+    "description": "Wikipediaで検索し表示します",
+    "example": ["/wiki Discord"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "money",
+    "name": "word",
+    "description": "英単語ゲームをします",
+    "example": ["/word"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "money",
+    "name": "work",
+    "description": "コインを入手します",
+    "example": ["/work"],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "contextmenu",
+    "name": "アバターを表示",
+    "description": "ユーザーのアイコンを表示します",
+    "example": [],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "contextmenu",
+    "name": "メッセージを固定",
+    "description": "メッセージを常に下に表示します",
+    "example": [],
+    "userPermission": ["チャンネルの管理", "メッセージの管理"],
+    "botPermission": ["チャンネルを見る", "メッセージの管理", "ウェブフックの管理"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "contextmenu",
+    "name": "メンバー情報を表示",
+    "description": "メンバーの詳細を表示します",
+    "example": [],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "contextmenu",
+    "name": "英語に翻訳",
+    "description": "メッセージを英語に翻訳します",
+    "example": [],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "contextmenu",
+    "name": "権限を表示",
+    "description": "メンバーの持っている権限を表示します",
+    "example": [],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  },
+  {
+    "type": "contextmenu",
+    "name": "日本語に翻訳",
+    "description": "メッセージを日本語に翻訳します",
+    "example": [],
+    "userPermission": ["必要なし"],
+    "botPermission": ["必要なし"],
+    "note": "なし",
+    "subcommands": []
+  }
+]

@@ -1,14 +1,15 @@
 import { PrismaPg } from "@prisma/adapter-pg";
-import { env } from "@takasumibot-v4/env/server";
+import { sharedEnv } from "@takasumibot-v4/env/shared";
 
 import { PrismaClient } from "../prisma/generated/client";
 
+export * from "../prisma/generated/client";
+
 export function createPrismaClient() {
   const adapter = new PrismaPg({
-    connectionString: env.DATABASE_URL,
+    connectionString: sharedEnv.DATABASE_URL,
   });
   return new PrismaClient({ adapter });
 }
 
-const prisma = createPrismaClient();
-export default prisma;
+export const prisma = createPrismaClient();
