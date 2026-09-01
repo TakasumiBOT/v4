@@ -1,7 +1,5 @@
 import { Client, Message, ChannelType } from "discord.js";
 import { MessageCreateEvent } from "@/@types/Util";
-import { relative } from "path";
-import Report from "@/util/Report";
 import { prisma } from "@/util/db";
 
 class PublishEvent implements MessageCreateEvent {
@@ -33,13 +31,6 @@ class PublishEvent implements MessageCreateEvent {
           channelId: message.channelId,
         },
       });
-
-      if (error instanceof Error) {
-        Report.sendMessageError(
-          message,
-          error.stack || `不明なエラー: ${relative(process.cwd(), __filename)}`,
-        );
-      }
     }
   }
 }

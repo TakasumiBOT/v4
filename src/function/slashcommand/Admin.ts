@@ -47,7 +47,7 @@ class AdminCommand implements Command {
     )
       return;
 
-    if (!(await isAdmin(interaction.user.id, true)))
+    if (!(await isAdmin(interaction.user.id)))
       return await interaction.reply({
         embeds: [
           {
@@ -56,7 +56,7 @@ class AdminCommand implements Command {
               name: "このコマンドは実行できません",
               icon_url: config.image.errorIcon,
             },
-            description: "このコマンドは**TakasumiBOT 管理者**専用です",
+            description: "このコマンドは**TakasumiBOT 管理者**専用です\n一般のユーザーは実行することができません\nこのエラーについてはサポートサーバーで対応することができません",
           },
         ],
         flags: MessageFlags.Ephemeral,

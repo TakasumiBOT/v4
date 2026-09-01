@@ -2,7 +2,7 @@ import { Client } from "discord.js";
 import { ReadyEvent } from "@/@types/Util";
 import updateStatus from "@/util/updateStatus";
 
-class StatusEvent implements ReadyEvent {
+class UpdateEvent implements ReadyEvent {
   public readonly client: Client;
 
   constructor(client: Client) {
@@ -18,4 +18,4 @@ class StatusEvent implements ReadyEvent {
   }
 }
 
-export default StatusEvent;
+export default UpdateEvent;

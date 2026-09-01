@@ -43,42 +43,7 @@ class GlobalChatEvent implements MessageCreateEvent {
 
     if (!guildGlobalChatData) return;
 
-    const accountData = await prisma.account.findUnique({
-      where: {
-        userId: message.author.id,
-      },
-      include: {
-        items: true,
-      },
-    });
-
-    if (!accountData)
-      return await message
-        .reply({
-          embeds: [
-            {
-              color: Colors.Red,
-              author: {
-                name: "アカウントが存在しません",
-                icon_url: config.image.errorIcon,
-              },
-              description:
-                "グローバルチャットを利用するにはアカウントの登録が必要です\n`/account register` を実行して認証とアカウントの登録をしてください",
-            },
-          ],
-        })
-        .catch(() => {});
-
     let embedColor: ColorResolvable = Colors.Green;
-    if (accountData.items.find((i) => i.itemId === "gcRandom")) {
-      embedColor = Math.floor(Math.random() * (0xffffff + 1));
-    } else if (accountData.items.find((i) => i.itemId === "gcRed")) {
-      embedColor = Colors.Red;
-    } else if (accountData.items.find((i) => i.itemId === "gcYellow")) {
-      embedColor = Colors.Yellow;
-    } else if (accountData.items.find((i) => i.itemId === "gcBlue")) {
-      embedColor = Colors.Blue;
-    }
 
     const history = await prisma.globalChatHistory.create({
       data: {
@@ -91,7 +56,7 @@ class GlobalChatEvent implements MessageCreateEvent {
 
     const embeds = [
       new EmbedBuilder()
-        .setColor(embedColor)
+        .setColor(Math.floor(Math.random() * (0xffffff + 1)))
         .setAuthor({
           name: isAdm ? `${message.author.tag}(管理者)` : `${message.author.tag}`,
           url: `https://discord.com/users/${message.author.id}`,

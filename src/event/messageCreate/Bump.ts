@@ -4,7 +4,6 @@ import config from "@/config";
 import { prisma } from "@/util/db";
 import { NotificationQueueService } from "@/util/NotificationQueue";
 import { NotificationType } from "@/generated";
-import { env } from "@/util/Env";
 
 class BumpEvent implements MessageCreateEvent {
   public readonly client: Client;

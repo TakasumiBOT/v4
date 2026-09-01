@@ -10,8 +10,6 @@ import {
 import { GuildMemberAddEvent } from "@/@types/Util";
 import { prisma } from "@/util/db";
 import config from "@/config";
-import { relative } from "path";
-import Report from "@/util/Report";
 import Fetch from "@/util/Fetch";
 
 class JoinEvent implements GuildMemberAddEvent {
@@ -85,14 +83,8 @@ class JoinEvent implements GuildMemberAddEvent {
             ),
           ],
         });
-      } catch (error) {
-        if (error instanceof Error) {
-          Report.sendCustomError({
-            guildId: noticeData.guildId,
-            channelId: noticeData.channelId,
-            reason: error.stack || `不明なエラー: ${relative(process.cwd(), __filename)}`,
-          });
-        }
+      } catch {
+        return;
       }
     }
   }

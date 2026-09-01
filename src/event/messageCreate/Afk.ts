@@ -2,7 +2,6 @@ import { Client, Message, Colors, ChannelType } from "discord.js";
 import { MessageCreateEvent } from "@/@types/Util";
 import config from "@/config";
 import { relative } from "path";
-import Report from "@/util/Report";
 import calcTime from "@/util/calcTime";
 import matchId from "@/util/matchId";
 import { prisma } from "@/util/db";
@@ -80,13 +79,8 @@ class AfkEvent implements MessageCreateEvent {
           ],
         });
       }
-    } catch (error) {
-      if (error instanceof Error) {
-        Report.sendMessageError(
-          message,
-          error.stack || `不明なエラー: ${relative(process.cwd(), __filename)}`,
-        );
-      }
+    } catch{
+      return;
     }
   }
 }
