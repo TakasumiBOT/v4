@@ -83,62 +83,6 @@ shardRedis.on("reconnecting", () => {
   updateStatus(client);
 });
 
-export const giveRole = async (userId: string, roleId: string, guildId: string): Promise<void> => {
-  const guild = await client.guilds.fetch(guildId);
-  const member = await guild.members.fetch(userId);
-
-  if (member) {
-    await member.roles.add(roleId);
-  } else {
-    Log.error(`ユーザーIDが${userId}のユーザーはギルドIDが${guildId}のサーバーに存在しません`);
-  }
-};
-
-export const getShardStatus = async (): Promise<ShardStats[]> => {
-  if (!client.shard) {
-    return [
-      {
-        shardId: 0,
-        status: client.ws.status.toString(),
-        ping: client.ws.ping,
-        guildCount: client.guilds.cache.filter((g) => g.available).size,
-        userCount: client.guilds.cache
-          .filter((g) => g.available)
-          .reduce((acc, guild) => acc + guild.memberCount, 0),
-      },
-    ];
-  }
-
-  const shardStatuses: ShardStats[] = [];
-
-  //console.info("index.ts debug", config.shardCount);
-  if (client.shard.count < config.shardCount) {
-    return shardStatuses;
-  }
-
-  const results = await client.shard.broadcastEval((c) => ({
-    guildCount: c.guilds.cache.filter((g) => g.available).size,
-    memberCount: c.guilds.cache
-      .filter((g) => g.available)
-      .reduce((acc, guild) => acc + guild.memberCount, 0),
-    status: c.ws.status.toString(),
-    ping: c.ws.ping,
-    shardId: (c as any).shard.ids[0],
-  }));
-
-  results.forEach((data, index) => {
-    shardStatuses.push({
-      shardId: data.shardId ?? index,
-      status: data.status,
-      ping: data.ping,
-      guildCount: data.guildCount,
-      userCount: data.memberCount,
-    });
-  });
-
-  return shardStatuses;
-};
-
 client.login(env.BOT_TOKEN).then(() => {
   Log.info(`${env.SHARDS ? `${env.SHARDS}番シャードが` : ""}ログインしました`);
 });

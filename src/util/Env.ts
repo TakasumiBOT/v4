@@ -14,6 +14,7 @@ export const env = createEnv({
     SHARD_LIST: z.string(),
     MACHINE_ID: z.string(),
     DATABASE_URL: z.string().min(1),
+    SHARD_REDIS: z.string(),
     NODE_ENV: z.enum(["development", "production", "test"]).default("development"),
   },
   runtimeEnv: process.env,

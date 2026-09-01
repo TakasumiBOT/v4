@@ -7,7 +7,7 @@ import getGuildCount from "@/util/getGuildCount";
 import { NotificationQueueService } from "@/util/NotificationQueue";
 import { NotificationType } from "@/generated";
 import { env } from "@/util/Env";
-import { getShardStatus } from "@/index";
+import { getShardStatus } from "./util/getShardStatus";
 
 class Cron {
   public readonly client: Client;
@@ -63,7 +63,7 @@ class Cron {
   }
 
   private async recordShardStatus(): Promise<void> {
-    const shardData = await getShardStatus();
+    const shardData = await getShardStatus(this.client);
 
     await prisma.shardStatus.create({
       data: {
