@@ -11,7 +11,6 @@ import {
 } from "discord.js";
 import { MessageCreateEvent } from "@/@types/Util";
 import config from "@/config";
-import leven from "@/util/leven";
 import RateLimit from "@/util/RateLimit";
 import { prisma } from "@/util/db";
 import Random from "@/util/Random";
@@ -149,16 +148,7 @@ class HiroyukiEvent implements MessageCreateEvent {
           avatarURL: config.image.tigyuuIcon,
         };
       } else {
-        let sentence: string = "";
-        for (let i = 9; i >= 0; i--) {
-          sentence = Random.getRandomElement(hiroyukiMsgData);
-
-          if (i / 10 > leven(sentence, message.content)) break;
-        }
-
-        if (sentence.length > 500) {
-          sentence = sentence.slice(0, 500);
-        }
+        const sentence: string = Random.getRandomElement(hiroyukiMsgData);
 
         messageData = {
           content: sentence,
