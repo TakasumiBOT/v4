@@ -14,8 +14,6 @@ import {
 import { Command, CommandType } from "@/@types/Util";
 import config from "@/config";
 import CommandUtils from "@/util/CommandUtils";
-import Report from "@/util/Report";
-import { relative } from "path";
 
 class EmojiCommand implements Command {
   public readonly client: Client;
@@ -106,13 +104,6 @@ class EmojiCommand implements Command {
         ],
       });
     } catch (error) {
-      if (error instanceof Error) {
-        Report.sendInteractionError(
-          interaction,
-          error.stack || `不明なエラー: ${relative(process.cwd(), __filename)}`,
-        );
-      }
-
       await interaction.reply({
         embeds: [
           {

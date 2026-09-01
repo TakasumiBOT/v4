@@ -12,7 +12,6 @@ import config from "@/config";
 import Fetch from "@/util/Fetch";
 import CommandUtils from "@/util/CommandUtils";
 import matchId from "@/util/matchId";
-import parsePlatform from "@/util/parsePlatform";
 
 class UserCommand implements Command {
   public readonly client: Client;
@@ -44,14 +43,6 @@ class UserCommand implements Command {
       return;
 
     const id = interaction.options.getString("id");
-
-    const status = {
-      online: "🟢オンライン",
-      offline: "⚫オフライン",
-      dnd: "⛔取り込み中",
-      idle: "🌙退席中",
-      invisible: "⚫オンライン状態を隠し中",
-    };
 
     if (!id) {
       const joinData = interaction.member.joinedAt

@@ -11,11 +11,8 @@ import {
   ApplicationCommandType,
 } from "discord.js";
 import { Command, CommandType } from "@/@types/Util";
-import { relative } from "path";
 import config from "@/config";
 import CommandUtils from "@/util/CommandUtils";
-import Report from "@/util/Report";
-
 class AvatarContextMenu implements Command {
   public readonly client: Client;
 
@@ -83,13 +80,6 @@ class AvatarContextMenu implements Command {
         ],
       });
     } catch (error) {
-      if (error instanceof Error) {
-        Report.sendInteractionError(
-          interaction,
-          error.stack || `不明なエラー: ${relative(process.cwd(), __filename)}`,
-        );
-      }
-
       await interaction.reply({
         embeds: [
           {

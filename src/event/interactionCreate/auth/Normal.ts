@@ -11,9 +11,6 @@ import {
 } from "discord.js";
 import { InteractionCreateEvent } from "@/@types/Util";
 import config from "@/config";
-import Report from "@/util/Report";
-import { relative } from "path";
-
 class NormalAuthEvent implements InteractionCreateEvent {
   public readonly client: Client;
 
@@ -70,13 +67,6 @@ class NormalAuthEvent implements InteractionCreateEvent {
         flags: MessageFlags.Ephemeral,
       });
     } catch (error) {
-      if (error instanceof Error) {
-        Report.sendInteractionError(
-          interaction,
-          error.stack || `不明なエラー: ${relative(process.cwd(), __filename)}`,
-        );
-      }
-
       await interaction.reply({
         embeds: [
           {

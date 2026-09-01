@@ -14,21 +14,8 @@ import os from "os";
 import process from "process";
 import config from "@/config";
 import CommandUtils from "@/util/CommandUtils";
-import Report from "@/util/Report";
-import { relative } from "path";
-import getMemoryStatus from "@/util/getMemoryStatus";
-import formatBytes from "@/util/formatBytes";
-import calcTime from "@/util/calcTime";
-import getBotStatus from "@/util/getBotStatus";
-import withSign from "@/util/withSign";
-import getEventStatus from "@/util/getEventStatus";
-import { EventType } from "@takasumibot-v4/db";
-import getGuildCount from "@/util/getGuildCount";
-import getUserCount from "@/util/getUserCount";
-import getCpuStatus from "@/util/getCpuStatus";
-import getCpuUsageAvg from "@/util/getCpuUsageAvg";
-import getMemoryUsageAvg from "@/util/getMemoryUsageAvg";
 import { env } from "@/util/Env";
+import calcTime from "@/util/calcTime";
 
 class StatusCommand implements Command {
   public readonly client: Client;
@@ -70,8 +57,6 @@ class StatusCommand implements Command {
         ],
       });
 
-      const memoryStatus = getMemoryStatus();
-
       await interaction.editReply({
         embeds: [
           {
@@ -80,23 +65,21 @@ class StatusCommand implements Command {
             fields: [
               {
                 name: "システム",
-                value: `CPU: ${await getCpuUsageAvg()}%\nRAM: ${formatBytes(memoryStatus.total - memoryStatus.free)}/${formatBytes(memoryStatus.total)} ${await getMemoryUsageAvg()}%\nマシン${env.MACHINE_ID}稼働時間: ${calcTime(os.uptime() * 1000)}\n(BOT: ${calcTime(process.uptime() * 1000)})`,
+                value: `マシン${env.MACHINE_ID}稼働時間: ${calcTime(os.uptime() * 1000)}\n(BOT: ${calcTime(process.uptime() * 1000)})`,
               },
               {
                 name: "Discord",
                 value: `Ping: ${interaction.client.ws.ping}ミリ秒\nコマンド数: ${(await interaction.client.application.commands.fetch()).size}個\n`,
-              },
-              {
-                name: "統計データ (累計/24時間/±増減数)",
-                value:
-                  `サーバー数: ${(await getGuildCount(this.client)).toLocaleString("ja-JP")} / ${(await getBotStatus("oneDayGuildCount")).toLocaleString("ja-JP")} / ${withSign(await getBotStatus("differenceGuildCount"))}\nユーザー数: ${(await getUserCount(this.client)).toLocaleString("ja-JP")} / ${(await getBotStatus("oneDayUserCount")).toLocaleString("ja-JP")} / ${withSign(await getBotStatus("differenceUserCount"))}\nTakasumiBOTアカウント: ${(await getBotStatus("totalTakasumiAccount")).toLocaleString("ja-JP")}\n` +
-                  `メッセージ数: ${(await getEventStatus("total", EventType.messageCreate)).toLocaleString("ja-JP")} / ${await getEventStatus("oneDay", EventType.messageCreate)} / ${withSign(await getEventStatus("difference", EventType.messageCreate))} (ユーザーのみ: ${(await getEventStatus("totalOnlyUser", EventType.messageCreate)).toLocaleString("ja-JP")})\nコマンド実行: ${(await getBotStatus("totalCmd")).toLocaleString("ja-JP")} / ${await getBotStatus("oneDayCmd")} / ${withSign(await getBotStatus("differenceCmd"))}\nインタラクション数: ${(await getEventStatus("total", EventType.interactionCreate)).toLocaleString("ja-JP")} / ${await getEventStatus("oneDay", EventType.interactionCreate)} / ${withSign(await getEventStatus("difference", EventType.interactionCreate))}\nメンバー参加数: ${(await getEventStatus("total", EventType.guildMemberAdd)).toLocaleString("ja-JP")} / ${await getEventStatus("oneDay", EventType.guildMemberAdd)} / ${withSign(await getEventStatus("difference", EventType.guildMemberAdd))}\nメンバー脱退数: ${(await getEventStatus("total", EventType.guildMemberRemove)).toLocaleString("ja-JP")} / ${await getEventStatus("oneDay", EventType.guildMemberRemove)} / ${withSign(await getEventStatus("difference", EventType.guildMemberRemove))}`,
               },
             ],
           },
         ],
         components: [
           new ActionRowBuilder<ButtonBuilder>().addComponents(
+            new ButtonBuilder()
+              .setLabel("ステータスサイト")
+              .setURL("https://status.takasumibot.com/")
+              .setStyle(ButtonStyle.Link),
             new ButtonBuilder()
               .setLabel("サポートサーバー")
               .setURL(config.inviteUrl)
@@ -105,13 +88,6 @@ class StatusCommand implements Command {
         ],
       });
     } catch (error) {
-      if (error instanceof Error) {
-        Report.sendInteractionError(
-          interaction,
-          error.stack || `不明なエラー: ${relative(process.cwd(), __filename)}`,
-        );
-      }
-
       await interaction.editReply({
         embeds: [
           {

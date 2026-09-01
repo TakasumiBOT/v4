@@ -13,8 +13,6 @@ import {
 import { SubCommand, ValidSubCommandInteraction } from "@/@types/Util";
 import CommandUtils from "@/util/CommandUtils";
 import config from "@/config";
-import Report from "@/util/Report";
-import { relative } from "path";
 import { prisma } from "@/util/db";
 import deleteDuplicateWebhook from "@/util/deleteDuplicateWebhook";
 import deleteWebhook from "@/util/deleteWebhook";
@@ -152,13 +150,6 @@ class LeaveSubCommand implements SubCommand {
           ],
         });
       } catch (error) {
-        if (error instanceof Error) {
-          Report.sendInteractionError(
-            interaction,
-            error.stack || `不明なエラー: ${relative(process.cwd(), __filename)}`,
-          );
-        }
-
         await interaction.editReply({
           embeds: [
             {

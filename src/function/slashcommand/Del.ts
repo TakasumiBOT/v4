@@ -14,8 +14,6 @@ import {
 } from "discord.js";
 import { Command, CommandType } from "@/@types/Util";
 import config from "@/config";
-import Report from "@/util/Report";
-import { relative } from "path";
 import CommandUtils from "@/util/CommandUtils";
 
 class DelCommand implements Command {
@@ -129,13 +127,6 @@ class DelCommand implements Command {
         });
       }
     } catch (error) {
-      if (error instanceof Error) {
-        Report.sendInteractionError(
-          interaction,
-          error.stack || `不明なエラー: ${relative(process.cwd(), __filename)}`,
-        );
-      }
-
       await interaction.reply({
         embeds: [
           {

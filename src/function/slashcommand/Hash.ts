@@ -11,9 +11,7 @@ import {
   MessageFlags,
 } from "discord.js";
 import { createHash, Hash } from "crypto";
-import { relative } from "path";
 import { Command, CommandType } from "@/@types/Util";
-import Report from "@/util/Report";
 import config from "@/config";
 import CommandUtils from "@/util/CommandUtils";
 
@@ -66,13 +64,6 @@ class HashCommand implements Command {
         ],
       });
     } catch (error) {
-      if (error instanceof Error) {
-        Report.sendInteractionError(
-          interaction,
-          error.stack || `不明なエラー: ${relative(process.cwd(), __filename)}`,
-        );
-      }
-
       await interaction.reply({
         embeds: [
           {

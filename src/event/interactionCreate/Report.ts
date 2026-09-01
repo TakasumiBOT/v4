@@ -10,9 +10,7 @@ import {
 } from "discord.js";
 import { InteractionCreateEvent } from "@/@types/Util";
 import config from "@/config";
-import Report from "@/util/Report";
-import { relative } from "path";
-import { reportTargetType } from "@takasumibot-v4/db";
+import { reportTargetType } from "@/generated";
 import Fetch from "@/util/Fetch";
 import createId from "@/util/createId";
 import Mute from "@/util/Mute";
@@ -300,13 +298,6 @@ class ReportEvent implements InteractionCreateEvent {
         flags: MessageFlags.Ephemeral,
       });
     } catch (error) {
-      if (error instanceof Error) {
-        Report.sendInteractionError(
-          interaction,
-          error.stack || `不明なエラー: ${relative(process.cwd(), __filename)}`,
-        );
-      }
-
       await interaction.reply({
         embeds: [
           {

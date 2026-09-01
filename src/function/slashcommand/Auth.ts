@@ -13,8 +13,6 @@ import {
 } from "discord.js";
 import { Command, CommandType } from "@/@types/Util";
 import config from "@/config";
-import { relative } from "path";
-import Report from "@/util/Report";
 import CommandUtils from "@/util/CommandUtils";
 
 class AuthCommand implements Command {
@@ -95,13 +93,6 @@ class AuthCommand implements Command {
 
       await interaction.deferReply().then(() => interaction.deleteReply());
     } catch (error) {
-      if (error instanceof Error) {
-        Report.sendInteractionError(
-          interaction,
-          error.stack || `不明なエラー: ${relative(process.cwd(), __filename)}`,
-        );
-      }
-
       await interaction.reply({
         embeds: [
           {

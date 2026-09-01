@@ -64,8 +64,6 @@ model systemLog {
   totalUser    Int
   totalGuild   Int
   totalCommand Int
-  cpuUsage     Int
-  memoryUsage  Int
   loggedAt     DateTime @default(now())
 }
 

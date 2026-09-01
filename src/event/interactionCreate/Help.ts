@@ -10,8 +10,6 @@ import {
 } from "discord.js";
 import { CommandType, InteractionCreateEvent } from "@/@types/Util";
 import config from "@/config";
-import Report from "@/util/Report";
-import { relative } from "path";
 import getParseCommands from "@/util/parseCommand";
 
 class HelpEvent implements InteractionCreateEvent {
@@ -77,13 +75,6 @@ class HelpEvent implements InteractionCreateEvent {
 
       await interaction.deferUpdate({});
     } catch (error) {
-      if (error instanceof Error) {
-        Report.sendInteractionError(
-          interaction,
-          error.stack || `不明なエラー: ${relative(process.cwd(), __filename)}`,
-        );
-      }
-
       await interaction.reply({
         embeds: [
           {

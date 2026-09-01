@@ -12,10 +12,8 @@ import {
   PermissionFlagsBits,
 } from "discord.js";
 import { Command, CommandType } from "@/@types/Util";
-import { relative } from "path";
 import config from "@/config";
 import CommandUtils from "@/util/CommandUtils";
-import Report from "@/util/Report";
 import Fetch from "@/util/Fetch";
 
 class WarnCommand implements Command {
@@ -113,13 +111,6 @@ class WarnCommand implements Command {
         ],
       });
     } catch (error) {
-      if (error instanceof Error) {
-        Report.sendInteractionError(
-          interaction,
-          error.stack || `不明なエラー: ${relative(process.cwd(), __filename)}`,
-        );
-      }
-
       await interaction.reply({
         embeds: [
           {

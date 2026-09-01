@@ -15,8 +15,6 @@ import {
 import { Command, CommandType } from "@/@types/Util";
 import config from "@/config";
 import CommandUtils from "@/util/CommandUtils";
-import Report from "@/util/Report";
-import { relative } from "path";
 import { prisma } from "@/util/db";
 import sendGlobalChat from "@/util/sendGlobalChat";
 import deleteWebhook from "@/util/deleteWebhook";
@@ -66,28 +64,6 @@ class GlobalchatCommand implements Command {
         guildId: interaction.guildId,
       },
     });
-
-    const accountData = await prisma.account.findUnique({
-      where: {
-        userId: interaction.user.id,
-      },
-    });
-
-    if (!accountData)
-      return await interaction.reply({
-        embeds: [
-          {
-            color: Colors.Red,
-            author: {
-              name: "アカウントが登録されていません",
-              icon_url: config.image.errorIcon,
-            },
-            description:
-              "グローバルチャットを利用するにはアカウントの登録が必要です\n`/account register` を実行して認証とアカウントの登録をしてください",
-          },
-        ],
-        flags: MessageFlags.Ephemeral,
-      });
 
     if (!guildGlobalChatData) {
       if (
@@ -180,13 +156,6 @@ class GlobalchatCommand implements Command {
             "https://cdn.discordapp.com/embed/avatars/0.png",
         });
       } catch (error) {
-        if (error instanceof Error) {
-          Report.sendInteractionError(
-            interaction,
-            error.stack || `不明なエラー: ${relative(process.cwd(), __filename)}`,
-          );
-        }
-
         await interaction.editReply({
           embeds: [
             {

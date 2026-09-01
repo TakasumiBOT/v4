@@ -13,10 +13,8 @@ import {
   MessageFlags,
 } from "discord.js";
 import { Command, CommandType } from "@/@types/Util";
-import Report from "@/util/Report";
 import config from "@/config";
 import Fetch from "@/util/Fetch";
-import { relative } from "path";
 import CommandUtils from "@/util/CommandUtils";
 
 class TimeoutCommand implements Command {
@@ -100,13 +98,6 @@ class TimeoutCommand implements Command {
         ],
       });
     } catch (error) {
-      if (error instanceof Error) {
-        Report.sendInteractionError(
-          interaction,
-          error.stack || `不明なエラー: ${relative(process.cwd(), __filename)}`,
-        );
-      }
-
       await interaction.editReply({
         embeds: [
           {

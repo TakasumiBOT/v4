@@ -14,8 +14,6 @@ import {
 import { Command, CommandType } from "@/@types/Util";
 import config from "@/config";
 import CommandUtils from "@/util/CommandUtils";
-import Report from "@/util/Report";
-import { relative } from "path";
 import { prisma } from "@/util/db";
 import deleteWebhook from "@/util/deleteWebhook";
 import deleteDuplicateWebhook from "@/util/deleteDuplicateWebhook";
@@ -140,13 +138,6 @@ class HiroyukiCommand implements Command {
           ],
         });
       } catch (error) {
-        if (error instanceof Error) {
-          Report.sendInteractionError(
-            interaction,
-            error.stack || `不明なエラー: ${relative(process.cwd(), __filename)}`,
-          );
-        }
-
         await interaction.editReply({
           embeds: [
             {

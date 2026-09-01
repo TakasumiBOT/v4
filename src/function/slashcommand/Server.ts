@@ -11,10 +11,8 @@ import {
   ShardClientUtil,
   ChannelType,
 } from "discord.js";
-import { relative } from "path";
-import { guildStatistics } from "@takasumibot-v4/db";
+import { guildStatistics } from "@/generated";
 import { Command, CommandType } from "@/@types/Util";
-import Report from "@/util/Report";
 import config from "@/config";
 import CommandUtils from "@/util/CommandUtils";
 import calcBoost from "@/util/calcBoost";
@@ -104,10 +102,6 @@ class Serverommand implements Command {
                 value: `${interaction.guild.createdAt.toLocaleString("ja-JP")}\n(${Math.floor((new Date().getTime() - interaction.guild.createdAt.getTime()) / 86400000)}日前)`,
               },
               {
-                name: "アクティビティ",
-                value: `-# サーバー負荷軽減のため、この項目は2月25日に無効化されました`,
-              },
-              {
                 name: "その他",
                 value: `チャンネル:${channels.size}個(💬:${text.size} 🔊:${voice.size} 📁:${category.size})\nロール:${roles.size}個\n絵文字:${emojis.size}個\nステッカー:${stickers.size}個\nNitro:${interaction.guild.premiumSubscriptionCount}ブースト(${calcBoost(interaction.guild.premiumSubscriptionCount)}レベル)${shardCount}`,
               },
@@ -122,13 +116,6 @@ class Serverommand implements Command {
         ],
       });
     } catch (error) {
-      if (error instanceof Error) {
-        Report.sendInteractionError(
-          interaction,
-          error.stack || `不明なエラー: ${relative(process.cwd(), __filename)}`,
-        );
-      }
-
       await interaction.editReply({
         embeds: [
           {

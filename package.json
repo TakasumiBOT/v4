@@ -20,9 +20,7 @@
     "@t3-oss/env-core": "^0.13.11",
     "discord-api-types": "^0.38.49",
     "discord.js": "^14.26.4",
-    "elysia": "^1.4.29",
     "node-cron": "^4.5.0",
-    "sharp": "^0.35.2",
     "zod": "^4.5.4"
   },
   "devDependencies": {
@@ -30,7 +28,6 @@
     "@types/bun": "latest",
     "@types/node": "^26.4.0",
     "@types/node-cron": "^3.0.11",
-    "@types/sharp": "^0.32.0",
     "oxfmt": "^0.65.0",
     "oxlint": "^1.80.0",
     "prisma": "7"

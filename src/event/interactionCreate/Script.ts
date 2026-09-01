@@ -6,8 +6,6 @@ import {
   AttachmentBuilder,
 } from "discord.js";
 import { InteractionCreateEvent } from "@/@types/Util";
-import { relative } from "path";
-import Report from "@/util/Report";
 import config from "@/config";
 
 class ScriptEvent implements InteractionCreateEvent {
@@ -118,13 +116,6 @@ class ScriptEvent implements InteractionCreateEvent {
         }
       }
     } catch (error) {
-      if (error instanceof Error) {
-        Report.sendInteractionError(
-          interaction,
-          error.stack || `不明なエラー: ${relative(process.cwd(), __filename)}`,
-        );
-      }
-
       await interaction.editReply({
         embeds: [
           {

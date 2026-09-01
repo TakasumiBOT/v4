@@ -11,11 +11,9 @@ import {
   ApplicationCommandType,
 } from "discord.js";
 import { Command, CommandType } from "@/@types/Util";
-import { relative } from "path";
 import config from "@/config";
 import CommandUtils from "@/util/CommandUtils";
 import Permission from "@/util/Permission";
-import Report from "@/util/Report";
 
 class PermissionContextMenu implements Command {
   public readonly client: Client;
@@ -80,13 +78,6 @@ class PermissionContextMenu implements Command {
         ],
       });
     } catch (error) {
-      if (error instanceof Error) {
-        Report.sendInteractionError(
-          interaction,
-          error.stack || `不明なエラー: ${relative(process.cwd(), __filename)}`,
-        );
-      }
-
       await interaction.reply({
         embeds: [
           {

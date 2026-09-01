@@ -3,7 +3,7 @@ import { MessageCreateEvent } from "@/@types/Util";
 import config from "@/config";
 import { prisma } from "@/util/db";
 import { NotificationQueueService } from "@/util/NotificationQueue";
-import { NotificationType } from "@takasumibot-v4/db";
+import { NotificationType } from "@/generated";
 import { env } from "@/util/Env";
 
 class BumpEvent implements MessageCreateEvent {

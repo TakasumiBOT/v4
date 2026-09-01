@@ -9,8 +9,6 @@ import {
   ButtonStyle,
 } from "discord.js";
 import { InteractionCreateEvent } from "@/@types/Util";
-import { relative } from "path";
-import Report from "@/util/Report";
 import config from "@/config";
 
 class ResetEvent implements InteractionCreateEvent {
@@ -76,13 +74,6 @@ class ResetEvent implements InteractionCreateEvent {
         })
         .catch(() => {});
     } catch (error) {
-      if (error instanceof Error) {
-        Report.sendInteractionError(
-          interaction,
-          error.stack || `不明なエラー: ${relative(process.cwd(), __filename)}`,
-        );
-      }
-
       await interaction.reply({
         embeds: [
           {

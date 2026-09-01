@@ -2,10 +2,8 @@ import { Client, Colors } from "discord.js";
 import cron from "node-cron";
 import { prisma } from "@/util/db";
 import Log from "@/util/Log";
-import getMemoryStatus from "@/util/getMemoryStatus";
 import getUserCount from "@/util/getUserCount";
 import getGuildCount from "@/util/getGuildCount";
-import getCpuStatus from "@/util/getCpuStatus";
 import { NotificationQueueService } from "@/util/NotificationQueue";
 import { NotificationType } from "@/generated";
 import { env } from "@/util/Env";
@@ -58,8 +56,6 @@ class Cron {
         totalUser: await getUserCount(this.client),
         totalGuild: await getGuildCount(this.client),
         totalCommand: commandCount,
-        cpuUsage: await getCpuStatus(1000),
-        memoryUsage: getMemoryStatus().usage,
         loggedAt: loggedAt,
       },
     });

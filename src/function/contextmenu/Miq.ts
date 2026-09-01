@@ -12,8 +12,6 @@ import {
   ButtonStyle,
 } from "discord.js";
 import { Command, CommandType } from "@/@types/Util";
-import Report from "@/util/Report";
-import { relative } from "path";
 import config from "@/config";
 import CommandUtils from "@/util/CommandUtils";
 
@@ -99,13 +97,6 @@ class MiqContextMenu implements Command {
         ],
       });
     } catch (error) {
-      if (error instanceof Error) {
-        Report.sendInteractionError(
-          interaction,
-          error.stack || `不明なエラー: ${relative(process.cwd(), __filename)}`,
-        );
-      }
-
       await interaction.reply({
         embeds: [
           {

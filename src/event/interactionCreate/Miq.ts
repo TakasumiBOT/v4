@@ -11,8 +11,6 @@ import {
 } from "discord.js";
 import { InteractionCreateEvent } from "@/@types/Util";
 import config from "@/config";
-import Report from "@/util/Report";
-import { relative } from "path";
 import Fetch from "@/util/Fetch";
 
 class MiqEvent implements InteractionCreateEvent {
@@ -86,13 +84,6 @@ class MiqEvent implements InteractionCreateEvent {
 
       await interaction.deferUpdate({});
     } catch (error) {
-      if (error instanceof Error) {
-        Report.sendInteractionError(
-          interaction,
-          error.stack || `不明なエラー: ${relative(process.cwd(), __filename)}`,
-        );
-      }
-
       await interaction.reply({
         embeds: [
           {
