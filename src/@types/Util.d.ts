@@ -225,28 +225,6 @@ type SendGlobalChatOptions = {
   userName?: string;
 };
 
-type PrismaTransaction = Omit<
-  DynamicClientExtensionThis<
-    TypeMap<
-      InternalArgs & {
-        result: {};
-        model: {};
-        query: {};
-        client: {};
-      },
-      GlobalOmitConfig | undefined
-    >,
-    TypeMapCb<GlobalOmitConfig | undefined>,
-    {
-      result: {};
-      model: {};
-      query: {};
-      client: {};
-    }
-  >,
-  "$extends" | "$transaction" | "$disconnect" | "$connect" | "$on"
->;
-
 export {
   ErrorLogData,
   ValidCommandInteraction,
