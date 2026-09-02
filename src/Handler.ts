@@ -278,14 +278,14 @@ class Handler {
     const global = this.commands
       .filter((c) => c.name !== "admin")
       .map((command) => command.build());
+
     const admin = this.commands.filter((c) => c.name === "admin").map((command) => command.build());
-    const adminGuilds = ["987698915820335124", "1103702475426513066"];
 
     await this.client.rest.put(Routes.applicationCommands(this.client.application.id), {
       body: global,
     });
 
-    for (const guildId of adminGuilds) {
+    for (const guildId of config.adminGuilds) {
       try {
         await this.client.rest.put(
           Routes.applicationGuildCommands(this.client.application.id, guildId),
@@ -294,9 +294,7 @@ class Handler {
           },
         );
       } catch (err: any) {
-        if (err.message != "Missing Access") {
-          console.error(err);
-        }
+        Log.error(err);
       }
     }
   }

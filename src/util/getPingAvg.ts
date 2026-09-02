@@ -14,7 +14,7 @@ const getPingAvg = async (client: Client): Promise<number> => {
       }
       return Math.round((pingList.reduce((sum, n) => sum + n, 0) / pingList.length) * 10) / 10;
     } catch (error) {
-      console.error("getPing.ts", error);
+      console.error(error);
       return -1;
     }
   } else {

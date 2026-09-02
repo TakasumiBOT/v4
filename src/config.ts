@@ -2,6 +2,7 @@ import { env } from "@/util/Env";
 
 const config = {
   clientId: "981314695543783484",
+  adminGuilds: ["987698915820335124", "1103702475426513066"],
   inviteUrl: "https://discord.gg/NEesRdGQwD",
   announce: {
     guildId: "987698915820335124",

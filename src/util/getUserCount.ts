@@ -10,7 +10,7 @@ const getUserCount = async (client: Client): Promise<number> => {
         .map((s: string | null | number) => parseInt(String(s), 10) || 0)
         .reduce((sum, n) => sum + n, 0);
     } catch (error) {
-      console.error("getUserCount.ts", error);
+      console.error(error);
       return -1;
     }
   } else {
