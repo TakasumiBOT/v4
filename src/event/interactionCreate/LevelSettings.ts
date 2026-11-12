@@ -39,37 +39,38 @@ class LevelSettingsEvent implements InteractionCreateEvent {
         flags: MessageFlags.Ephemeral,
       });
 
-    const setting = await prisma.levelSetting.findUnique({
-      where: { userId: interaction.user.id },
-    });
-    const notify: boolean = !(setting?.notify ?? true);
+    // 現在値の反転を1文でアトミックに行う (連打してもトグルが失われない)。
+    // 行が無い場合は既定値 true の反転として false で作る。
+    const rows = await prisma.$queryRaw<{ notify: boolean }[]>`
+      INSERT INTO "levelSetting" ("userId", "notify", "updatedAt", "registeredAt")
+      VALUES (${interaction.user.id}, false, NOW(), NOW())
+      ON CONFLICT ("userId")
+      DO UPDATE SET "notify" = NOT "levelSetting"."notify", "updatedAt" = NOW()
+      RETURNING "notify"`;
+    const notify: boolean = rows[0].notify;
 
-    await prisma.levelSetting.upsert({
-      where: { userId: interaction.user.id },
-      create: { userId: interaction.user.id, notify },
-      update: { notify },
-    });
-
-    await interaction.update({
-      embeds: [
-        {
-          color: Colors.Green,
-          author: {
-            name: "レベル設定",
-            icon_url: config.image.configIcon,
+    await interaction
+      .update({
+        embeds: [
+          {
+            color: Colors.Green,
+            author: {
+              name: "レベル設定",
+              icon_url: config.image.configIcon,
+            },
+            description: `レベルアップ通知: **${notify ? "オン" : "オフ"}**`,
           },
-          description: `レベルアップ通知: **${notify ? "オン" : "オフ"}**`,
-        },
-      ],
-      components: [
-        new ActionRowBuilder<ButtonBuilder>().addComponents(
-          new ButtonBuilder()
-            .setCustomId(`levelSettings_${interaction.user.id}`)
-            .setLabel(notify ? "レベルアップ通知をオフにする" : "レベルアップ通知をオンにする")
-            .setStyle(notify ? ButtonStyle.Danger : ButtonStyle.Success),
-        ),
-      ],
-    });
+        ],
+        components: [
+          new ActionRowBuilder<ButtonBuilder>().addComponents(
+            new ButtonBuilder()
+              .setCustomId(`levelSettings_${interaction.user.id}`)
+              .setLabel(notify ? "レベルアップ通知をオフにする" : "レベルアップ通知をオンにする")
+              .setStyle(notify ? ButtonStyle.Danger : ButtonStyle.Success),
+          ),
+        ],
+      })
+      .catch(() => {});
   }
 }
 

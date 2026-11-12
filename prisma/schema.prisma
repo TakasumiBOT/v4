@@ -311,6 +311,7 @@ model levelUser {
   registeredAt  DateTime  @default(now())
 
   @@unique([userId, guildId])
+  @@index([guildId, chatExp])
 }
 
 model levelSetting {

@@ -75,11 +75,23 @@ class LevelCommand implements Command {
         },
       })) + 1;
 
-    const totals = await prisma.levelUser.groupBy({
-      by: ["userId"],
-      _sum: { chatExp: true },
-    });
-    const globalRank = totals.filter((row) => (row._sum.chatExp ?? 0) > data.chatExp).length + 1;
+    // 全体順位はユーザーごとの全サーバー合計同士で比べる。
+    // 集計は DB 側で完結させ、全行をメモリに読み込まない。
+    const totalRows = await prisma.$queryRaw<{ total: number }[]>`
+      SELECT COALESCE(SUM("chatExp"), 0)::int AS "total"
+      FROM "levelUser"
+      WHERE "userId" = ${interaction.user.id}`;
+    const totalExp: number = totalRows[0]?.total ?? data.chatExp;
+
+    const rankRows = await prisma.$queryRaw<{ count: number }[]>`
+      SELECT COUNT(*)::int AS "count"
+      FROM (
+        SELECT "userId"
+        FROM "levelUser"
+        GROUP BY "userId"
+        HAVING SUM("chatExp") > ${totalExp}
+      ) AS "totals"`;
+    const globalRank: number = (rankRows[0]?.count ?? 0) + 1;
 
     const filled = Math.min(12, Math.floor((current / next) * 12));
     const bar = "█".repeat(filled) + "░".repeat(12 - filled);
@@ -96,7 +108,7 @@ class LevelCommand implements Command {
           fields: [
             {
               name: "総EXP",
-              value: `${data.chatExp}`,
+              value: `${totalExp}`,
               inline: true,
             },
             {
